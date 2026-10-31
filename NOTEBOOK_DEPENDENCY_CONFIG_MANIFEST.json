@@ -1,0 +1,5035 @@
+{
+  "manifest_schema": "PET-KLS Colab static dependency/configuration inventory v1",
+  "source": {
+    "title": "PET-KLS_Pipeline",
+    "drive_modified_utc": "2026-09-08T14:07:37.103Z",
+    "cell_count": 206,
+    "runtime_version": "2026.07",
+    "recorded_python": "3.12.13 (GCC 11.4.0)"
+  },
+  "scope_notes": [
+    "Every import statement and pip command is collected from every code cell.",
+    "Every top-level uppercase assignment and every function default is indexed.",
+    "Runtime-computed values and local variables inside functions are excluded.",
+    "Machine-specific roots are replaced with placeholders; no credentials are included.",
+    "Public copy: personal HPC path and source notebook sharing identifiers removed; package versions and indexed cells retained."
+  ],
+  "import_roots": [
+    "IPython",
+    "argparse",
+    "brainspace",
+    "gc",
+    "glob",
+    "google",
+    "importlib",
+    "matplotlib",
+    "networkx",
+    "neuromaps",
+    "nibabel",
+    "nilearn",
+    "numba",
+    "numpy",
+    "os",
+    "pandas",
+    "pathlib",
+    "patsy",
+    "pycirclize",
+    "re",
+    "requests",
+    "scipy",
+    "sklearn",
+    "statsmodels",
+    "subprocess",
+    "surfplot",
+    "sys",
+    "warnings"
+  ],
+  "import_statements": [
+    "from IPython.display import display",
+    "from IPython.display import display as ipy_display",
+    "from IPython.display import display, Image",
+    "from brainspace.datasets import load_parcellation",
+    "from google.colab import drive",
+    "from google.colab import files",
+    "from google.colab import files as colab_files",
+    "from matplotlib import cm",
+    "from matplotlib import colormaps",
+    "from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas",
+    "from matplotlib.cm import ScalarMappable",
+    "from matplotlib.collections import LineCollection",
+    "from matplotlib.colors import BoundaryNorm, Normalize",
+    "from matplotlib.colors import ListedColormap",
+    "from matplotlib.colors import Normalize",
+    "from matplotlib.colors import Normalize, to_hex",
+    "from matplotlib.colors import hsv_to_rgb",
+    "from matplotlib.lines import Line2D",
+    "from matplotlib.patches import Patch",
+    "from matplotlib.ticker import FormatStrFormatter",
+    "from neuromaps import nulls",
+    "from neuromaps.datasets import fetch_fslr",
+    "from nilearn import datasets, image",
+    "from nilearn import datasets, plotting",
+    "from nilearn import datasets, plotting, image",
+    "from nilearn import plotting",
+    "from nilearn import plotting, datasets",
+    "from nilearn.image import load_img",
+    "from nilearn.maskers import NiftiLabelsMasker",
+    "from nilearn.plotting import find_parcellation_cut_coords",
+    "from nilearn.plotting import find_xyz_cut_coords",
+    "from pathlib import Path",
+    "from patsy import dmatrix",
+    "from pycirclize import Circos",
+    "from scipy import stats",
+    "from scipy.ndimage import rotate",
+    "from scipy.stats import f as f_dist",
+    "from scipy.stats import gaussian_kde",
+    "from scipy.stats import kruskal, mannwhitneyu",
+    "from scipy.stats import mannwhitneyu",
+    "from scipy.stats import mannwhitneyu, chi2_contingency",
+    "from scipy.stats import pearsonr",
+    "from scipy.stats import pearsonr, spearmanr",
+    "from scipy.stats import shapiro, levene, ttest_ind, mannwhitneyu",
+    "from scipy.stats import spearmanr, mannwhitneyu",
+    "from scipy.stats import t as t_dist",
+    "from scipy.stats import t as t_dist, ttest_rel, ttest_ind",
+    "from scipy.stats import ttest_rel",
+    "from sklearn.base import clone",
+    "from sklearn.compose import ColumnTransformer",
+    "from sklearn.decomposition import PCA",
+    "from sklearn.impute import SimpleImputer",
+    "from sklearn.linear_model import LinearRegression",
+    "from sklearn.metrics import (",
+    "from sklearn.model_selection import RepeatedKFold",
+    "from sklearn.pipeline import Pipeline",
+    "from sklearn.preprocessing import (",
+    "from statsmodels.formula.api import ols",
+    "from statsmodels.gam.api import GLMGam, BSplines",
+    "from statsmodels.nonparametric.smoothers_lowess import lowess",
+    "from statsmodels.stats.multitest import multipletests",
+    "from surfplot import Plot",
+    "import argparse",
+    "import glob",
+    "import importlib.util",
+    "import matplotlib",
+    "import matplotlib as mpl",
+    "import matplotlib.gridspec as gridspec",
+    "import matplotlib.pyplot as plt",
+    "import networkx as nx",
+    "import nibabel as nib",
+    "import nilearn",
+    "import numba",
+    "import numpy as np",
+    "import os",
+    "import os, gc, warnings",
+    "import pandas as pd",
+    "import re",
+    "import re, os",
+    "import requests",
+    "import statsmodels.api as sm",
+    "import statsmodels.formula.api as smf",
+    "import subprocess",
+    "import sys",
+    "import warnings"
+  ],
+  "pip_install_commands": [
+    "pip -q install brainspace neuromaps surfplot nibabel nilearn",
+    "pip -q install brainspace surfplot neuromaps nibabel",
+    "pip -q install nilearn",
+    "pip -q install pycirclize",
+    "pip -q install pycirclize nilearn",
+    "pip -q install pycirclize nilearn nibabel scipy",
+    "pip -q install pycirclize nilearn scipy",
+    "pip install -q  \"numpy==2.2.6\"  \"numba==0.61.2\"  \"pandas==2.2.3\"  \"requests==2.32.4\"  \"nilearn==0.13.0\""
+  ],
+  "cell_index": {
+    "6": {
+      "id": "2KvgRzwvMg4f",
+      "section": "Configs"
+    },
+    "7": {
+      "id": "0LgVcMw4pccD",
+      "section": "Configs"
+    },
+    "8": {
+      "id": "YUzbXs4nfmF3",
+      "section": "Configs"
+    },
+    "10": {
+      "id": "eik_BTuAx1NF",
+      "section": "Part 1: KLS Group comparison"
+    },
+    "12": {
+      "id": "P5mmmHKMJ-Yn",
+      "section": "Part 1: KLS Group comparison"
+    },
+    "14": {
+      "id": "0HB2J-XIJ-T4",
+      "section": "Part 1: KLS Group comparison"
+    },
+    "15": {
+      "id": "Lw07QvsRJ-Rj",
+      "section": "Part 1: KLS Group comparison"
+    },
+    "16": {
+      "id": "WcRqte0VJ-O7",
+      "section": "Part 1: KLS Group comparison"
+    },
+    "17": {
+      "id": "Pr-4NCIkjSCs",
+      "section": "Part 1: KLS Group comparison"
+    },
+    "20": {
+      "id": "hfXOpgTR0bZQ",
+      "section": "Part 2: Composite fig - Disease trajectory modeling"
+    },
+    "22": {
+      "id": "FGBppoINWcH4",
+      "section": "Part 2: Composite fig - Disease trajectory modeling"
+    },
+    "24": {
+      "id": "2KLifCmpda21",
+      "section": "Part 2: Composite fig - Disease trajectory modeling"
+    },
+    "25": {
+      "id": "NZ_QXbWmmPSr",
+      "section": "Part 2: Composite fig - Disease trajectory modeling"
+    },
+    "27": {
+      "id": "v-mS84yzWcFk",
+      "section": "Part 2: Composite fig - Disease trajectory modeling"
+    },
+    "28": {
+      "id": "J8kbK21JZgE5",
+      "section": "Part 2: Composite fig - Disease trajectory modeling"
+    },
+    "29": {
+      "id": "lZoi8PNsWcDb",
+      "section": "Part 2: Composite fig - Disease trajectory modeling"
+    },
+    "30": {
+      "id": "hJKKwwMFnl2f",
+      "section": "Part 2: Composite fig - Disease trajectory modeling"
+    },
+    "31": {
+      "id": "LLqBEBRU_Tg9",
+      "section": "Part 2: Composite fig - Disease trajectory modeling"
+    },
+    "33": {
+      "id": "3w3Q8TbOrVWp",
+      "section": "Part 2: Composite fig - Disease trajectory modeling"
+    },
+    "36": {
+      "id": "wUcuiuqtPiRa",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "40": {
+      "id": "gMtzSJksUrcu",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "41": {
+      "id": "4fiRZn8zU-p6",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "42": {
+      "id": "cltT5Hu0kzaU",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "43": {
+      "id": "_ONMNYuEU-eE",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "45": {
+      "id": "5WoHUTvXnwVj",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "46": {
+      "id": "rkJxHC7mC11P",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "47": {
+      "id": "cNdZVDTwDrX7",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "72": {
+      "id": "kxh6rj9XnYTP",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "73": {
+      "id": "bVp5nODignmU",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "74": {
+      "id": "87d5F5h2Ye7U",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "92": {
+      "id": "pjPfJ1agmxZ6",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "94": {
+      "id": "e9fUauAMX8Bf",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "98": {
+      "id": "Xr5KZw1KdMAI",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "104": {
+      "id": "AV4QIjBWvdhg",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "105": {
+      "id": "K0NLBisyDeBX",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "106": {
+      "id": "hHzCYPJAEQZS",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "107": {
+      "id": "4CYZrW26MNZv",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "109": {
+      "id": "gLHNfCBXKr7s",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "110": {
+      "id": "EUuPwc3yTLgQ",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "111": {
+      "id": "uIyL5LO-HJZK",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "112": {
+      "id": "ewyJ18Lxx4P7",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "113": {
+      "id": "_bLfYMKH20fL",
+      "section": "KLS, PDF & Shannon Entropy Trajectories (SILA)"
+    },
+    "115": {
+      "id": "8Q8NGLf7dNuz",
+      "section": "Between/ Within Networks"
+    },
+    "116": {
+      "id": "XLUKo7K6xwpb",
+      "section": "Between/ Within Networks"
+    },
+    "122": {
+      "id": "gtU7QhJ8UZwQ",
+      "section": "Between/ Within Networks"
+    },
+    "124": {
+      "id": "6qBHwlXbozbq",
+      "section": "Group Edge Brains"
+    },
+    "125": {
+      "id": "i1do6WQ_3-lJ",
+      "section": "Group Edge Brains"
+    },
+    "133": {
+      "id": "i2b1E-8Xtmry",
+      "section": "Group Edge Brains"
+    },
+    "134": {
+      "id": "icvNyi-hYdOG",
+      "section": "Group Edge Brains"
+    },
+    "135": {
+      "id": "D-6U2SlyI7dy",
+      "section": "Group Edge Brains"
+    },
+    "140": {
+      "id": "5YvEcVy_lgiX",
+      "section": "Circos plots"
+    },
+    "141": {
+      "id": "Hbt9zL6o3lHy",
+      "section": "Circos plots"
+    },
+    "143": {
+      "id": "Lwgmw_OrDKNr",
+      "section": "Circos plots"
+    },
+    "144": {
+      "id": "SLGtFw00emN9",
+      "section": "Circos plots"
+    },
+    "145": {
+      "id": "OhxfJTxJRDJw",
+      "section": "Circos plots"
+    },
+    "146": {
+      "id": "z1xHmkbTG_5h",
+      "section": "Circos plots"
+    },
+    "147": {
+      "id": "18WvkmZzXVZg",
+      "section": "Circos plots"
+    },
+    "149": {
+      "id": "begCRFPcsJJj",
+      "section": "Circos plots"
+    },
+    "150": {
+      "id": "O7o6txEPc1QI",
+      "section": "Circos plots"
+    },
+    "152": {
+      "id": "4xMB6O8twiTL",
+      "section": "Circos plots"
+    },
+    "153": {
+      "id": "XazEuKzU8Ec8",
+      "section": "Circos plots"
+    },
+    "155": {
+      "id": "brCUqId5uEaS",
+      "section": "Brainmaps"
+    },
+    "156": {
+      "id": "VEsYvRrNn0r4",
+      "section": "Brainmaps"
+    },
+    "158": {
+      "id": "NTjoxe0boBJk",
+      "section": "Brainmaps"
+    },
+    "159": {
+      "id": "ZU4nKeC0q9qD",
+      "section": "Brainmaps"
+    },
+    "160": {
+      "id": "gJ-YKScH0YZX",
+      "section": "Brainmaps"
+    },
+    "161": {
+      "id": "Epu2VGjY2MFA",
+      "section": "Brainmaps"
+    },
+    "162": {
+      "id": "iHYEdain3AC6",
+      "section": "Brainmaps"
+    },
+    "163": {
+      "id": "aiSNibBo4Kn1",
+      "section": "Brainmaps"
+    },
+    "164": {
+      "id": "u_R3YMvt4XTa",
+      "section": "Brainmaps"
+    },
+    "165": {
+      "id": "cMVdWizY6QEa",
+      "section": "Brainmaps"
+    },
+    "166": {
+      "id": "36NtfDLYuvsi",
+      "section": "Brainmaps"
+    },
+    "167": {
+      "id": "KLtt2gVW7zFU",
+      "section": "Brainmaps"
+    },
+    "168": {
+      "id": "rwaV43MF-0Sg",
+      "section": "Brainmaps"
+    },
+    "170": {
+      "id": "MTZT8wPhFkSc",
+      "section": "Group gradients"
+    },
+    "172": {
+      "id": "-vY_okMPjN0M",
+      "section": "Group gradients"
+    },
+    "173": {
+      "id": "dmm7QK1DHSBN",
+      "section": "Group gradients"
+    },
+    "174": {
+      "id": "tVFLk0HJP940",
+      "section": "Group gradients"
+    },
+    "175": {
+      "id": "9XokaBYlfFgk",
+      "section": "Group gradients"
+    },
+    "176": {
+      "id": "gdhnqhp1L1be",
+      "section": "Group gradients"
+    },
+    "178": {
+      "id": "vP20W3JCN3ST",
+      "section": "Group gradients"
+    },
+    "179": {
+      "id": "yIq9U6K5kapE",
+      "section": "Group gradients"
+    },
+    "180": {
+      "id": "nxxWMwJYN5Ct",
+      "section": "Group gradients"
+    },
+    "181": {
+      "id": "a8F2vntumAnp",
+      "section": "Group gradients"
+    },
+    "182": {
+      "id": "PGMB9Uvq0Nzt",
+      "section": "Group gradients"
+    },
+    "183": {
+      "id": "S6QwaJNx5_bS",
+      "section": "Group gradients"
+    },
+    "186": {
+      "id": "2BBXQr9QFusN",
+      "section": "Tracer testing"
+    },
+    "192": {
+      "id": "jSlVBo7bP8eV",
+      "section": "Reviewer 1: 2. Added value beyond conventional PET measures."
+    },
+    "194": {
+      "id": "n80hzBZ5P8Zt",
+      "section": "Reviewer 1: 5. Confounding and interpretation."
+    },
+    "195": {
+      "id": "yKUz94VkgCux",
+      "section": "Reviewer 1: 5. Confounding and interpretation."
+    },
+    "196": {
+      "id": "KSbohT9GhwKC",
+      "section": "Reviewer 1: 5. Confounding and interpretation."
+    },
+    "198": {
+      "id": "1cpESkLJzAeC",
+      "section": "Reviewer Updated Figs"
+    }
+  },
+  "top_level_configuration": [
+    {
+      "variable": "A",
+      "expression": "np.zeros((len(node_labels), len(node_labels)), dtype=float)",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "ABS_R_THRESH",
+      "expression": "0.50",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "ADD_ONSET_LINE",
+      "expression": "True",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "AGE_COL",
+      "expression": "\"age\"",
+      "cells": [
+        192,
+        194
+      ]
+    },
+    {
+      "variable": "ALPHA",
+      "expression": "0.05",
+      "cells": [
+        195,
+        196
+      ]
+    },
+    {
+      "variable": "ALPHAS",
+      "expression": "[0.001, 0.01, 0.1, 1, 10]",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "ALPHA_FDR",
+      "expression": "0.05",
+      "cells": [
+        162,
+        164,
+        198
+      ]
+    },
+    {
+      "variable": "ALPHA_GRAY",
+      "expression": "0.10",
+      "cells": [
+        30,
+        31
+      ]
+    },
+    {
+      "variable": "ALPHA_NS",
+      "expression": "0.10",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "ALPHA_NSIG",
+      "expression": "0.08",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "ALPHA_Q",
+      "expression": "0.05",
+      "cells": [
+        133
+      ]
+    },
+    {
+      "variable": "ALPHA_SIG",
+      "expression": "0.8",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "ALPHA_SIG",
+      "expression": "0.95",
+      "cells": [
+        30,
+        31
+      ]
+    },
+    {
+      "variable": "ALPHA_T1",
+      "expression": "0.30",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "ALPHA_T2",
+      "expression": "0.45",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "ALPHA_T3",
+      "expression": "0.70",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "ANCHOR",
+      "expression": "-30",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "ANCHOR_BIN",
+      "expression": "\"< -15\"",
+      "cells": [
+        22
+      ]
+    },
+    {
+      "variable": "ANCHOR_BIN",
+      "expression": "\"<-15\"",
+      "cells": [
+        24,
+        115
+      ]
+    },
+    {
+      "variable": "ANCHOR_BIN",
+      "expression": "str(ANCHOR_BIN)",
+      "cells": [
+        116
+      ]
+    },
+    {
+      "variable": "ANCHOR_BINS",
+      "expression": "[\"< -15\"]",
+      "cells": [
+        20
+      ]
+    },
+    {
+      "variable": "ANCHOR_CUT",
+      "expression": "-15",
+      "cells": [
+        111
+      ]
+    },
+    {
+      "variable": "ANCHOR_CUTOFF",
+      "expression": "-15",
+      "cells": [
+        28,
+        29
+      ]
+    },
+    {
+      "variable": "ANCHOR_EDGE",
+      "expression": "-30",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "ANCHOR_LABEL",
+      "expression": "\"<-15\"",
+      "cells": [
+        92,
+        94,
+        98,
+        112,
+        113
+      ]
+    },
+    {
+      "variable": "ANCHOR_MASK",
+      "expression": "lambda s: s < -15",
+      "cells": [
+        25,
+        30
+      ]
+    },
+    {
+      "variable": "ANCHOR_STAGE",
+      "expression": "\"<-15\"",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "ANCHOR_X",
+      "expression": "-17.5",
+      "cells": [
+        98
+      ]
+    },
+    {
+      "variable": "APOE_CANDIDATES",
+      "expression": "[ \"apoe4_carrier_bin\", \"apoe4_carrier\", \"apoe4_alleles\", \"apoe_genotype\", ]",
+      "cells": [
+        194
+      ]
+    },
+    {
+      "variable": "APOE_SOURCE_COL",
+      "expression": "available_apoe_columns[0]",
+      "cells": [
+        194
+      ]
+    },
+    {
+      "variable": "ATLAS_NII",
+      "expression": "Path( \"<GOOGLE_DRIVE_ROOT>/brainmaps/Schaefer2018/\" \"Schaefer2018_100Parcels_17Networks_order_FSLMNI152_1mm.nii.gz\" )",
+      "cells": [
+        168
+      ]
+    },
+    {
+      "variable": "AUTO_INSTALL_MISSING",
+      "expression": "True",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "BASE",
+      "expression": "\"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results\"",
+      "cells": [
+        6,
+        8,
+        10,
+        16,
+        25,
+        30,
+        31,
+        125,
+        133,
+        134,
+        135,
+        152,
+        186,
+        194,
+        195,
+        196
+      ]
+    },
+    {
+      "variable": "BASE",
+      "expression": "\"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results/6_df_clinical_baseline_sila_gp_kls_LABELS.csv\"",
+      "cells": [
+        111
+      ]
+    },
+    {
+      "variable": "BASE",
+      "expression": "\"drive/MyDrive/PET_KLS_Project/Final_Results/stats/fig2\"",
+      "cells": [
+        36
+      ]
+    },
+    {
+      "variable": "BASE",
+      "expression": "Path( \"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results\" )",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "BASE_DIR",
+      "expression": "\"<GOOGLE_DRIVE_ROOT>\"",
+      "cells": [
+        156
+      ]
+    },
+    {
+      "variable": "BETWEEN_PREFIX",
+      "expression": "\"betweenH_\"",
+      "cells": [
+        111
+      ]
+    },
+    {
+      "variable": "BIN_COL",
+      "expression": "\"estdtt0_5y\"",
+      "cells": [
+        20,
+        22
+      ]
+    },
+    {
+      "variable": "BIN_COL",
+      "expression": "\"sila_bin\"",
+      "cells": [
+        46,
+        72,
+        112,
+        113
+      ]
+    },
+    {
+      "variable": "BIN_COL_FALLBACK",
+      "expression": "\"estdtt0_bin_5y\"",
+      "cells": [
+        24
+      ]
+    },
+    {
+      "variable": "BIN_COL_PRIMARY",
+      "expression": "\"estdtt0_5y\"",
+      "cells": [
+        24
+      ]
+    },
+    {
+      "variable": "BIN_EDGES",
+      "expression": "[-np.inf, -15, -10, -5, 0, 5, 10, 15]",
+      "cells": [
+        41,
+        42,
+        43,
+        45,
+        46,
+        73,
+        74,
+        92,
+        94,
+        98,
+        111,
+        115
+      ]
+    },
+    {
+      "variable": "BIN_EDGES",
+      "expression": "[-np.inf] + list(np.arange(-15, 16, 1))",
+      "cells": [
+        109
+      ]
+    },
+    {
+      "variable": "BIN_EDGES",
+      "expression": "np.concatenate(([-np.inf, ANCHOR_EDGE], year_edges[1:]))",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "BIN_EDGES",
+      "expression": "np.concatenate(([-np.inf], year_edges))",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "BIN_EDGES_A",
+      "expression": "[-np.inf, -15, -10, -5, 0, 5, 10, 15]",
+      "cells": [
+        72
+      ]
+    },
+    {
+      "variable": "BIN_EDGES_B",
+      "expression": "[-np.inf, -30, -25, -20, -15, -10, -5, 0, 5, 10, 15]",
+      "cells": [
+        72
+      ]
+    },
+    {
+      "variable": "BIN_LABELS",
+      "expression": "[\"<-15\", \"[-15,-10)\", \"[-10,-5)\", \"[-5,0)\", \"[0,5)\", \"[5,10)\", \"[10,15)\"]",
+      "cells": [
+        41,
+        74,
+        92,
+        94,
+        98,
+        111,
+        115
+      ]
+    },
+    {
+      "variable": "BIN_LABELS",
+      "expression": "[\"<-15\",\"[-15,-10)\",\"[-10,-5)\",\"[-5,0)\", \"[0,5)\",\"[5,10)\",\"[10,15)\"]",
+      "cells": [
+        45
+      ]
+    },
+    {
+      "variable": "BIN_LABELS",
+      "expression": "[\"<-15\",\"[-15,-10)\",\"[-10,-5)\",\"[-5,0)\",\"[0,5)\",\"[5,10)\",\"[10,15)\"]",
+      "cells": [
+        42,
+        43,
+        46,
+        73
+      ]
+    },
+    {
+      "variable": "BIN_LABELS",
+      "expression": "[\"<-15\"] + [f\"[{k},{k+1})\" for k in range(-15, 15)]",
+      "cells": [
+        109
+      ]
+    },
+    {
+      "variable": "BIN_LABELS",
+      "expression": "[\"<-30\"] + [f\"[{int(a)},{int(a+1)})\" for a in year_edges[:-1]]",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "BIN_LABELS",
+      "expression": "[f\"<{ANCHOR}\"] + [f\"[{int(a)},{int(a+1)})\" for a in year_edges[:-1]]",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "BIN_LABELS_A",
+      "expression": "[\"<-15\", \"[-15,-10)\", \"[-10,-5)\", \"[-5,0)\", \"[0,5)\", \"[5,10)\", \"[10,15)\"]",
+      "cells": [
+        72
+      ]
+    },
+    {
+      "variable": "BIN_LABELS_B",
+      "expression": "[\"<-30\",\"[-30,-25)\",\"[-25,-20)\",\"[-20,-15)\",\"[-15,-10)\",\"[-10,-5)\",\"[-5,0)\",\"[0,5)\",\"[5,10)\",\"[10,15)\"]",
+      "cells": [
+        72
+      ]
+    },
+    {
+      "variable": "BIN_LABELS_STR",
+      "expression": "[str(x) for x in BIN_LABELS]",
+      "cells": [
+        111,
+        116
+      ]
+    },
+    {
+      "variable": "BIN_MID",
+      "expression": "{\"<-30\": -30.0}",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "BIO_FILES",
+      "expression": "{ \"celltype\": BRAINMAP_DIR / \"celltype_density_Yeo17_aggregated.csv\", \"gene\": BRAINMAP_DIR / \"gene-expression_Yeo17_aggregated.csv\", \"receptor\": BRAINMAP_DIR / \"receptor_density_Yeo17_aggregated.csv\", # \"microstructure\": BRAINMAP_DIR / \"microstructure_Yeo17_aggregated.csv\", }",
+      "cells": [
+        179
+      ]
+    },
+    {
+      "variable": "BIO_FILES",
+      "expression": "{ \"celltype\": BRAINMAP_DIR / \"celltype_density_Yeo17_aggregated.csv\", \"gene\": BRAINMAP_DIR / \"gene-expression_Yeo17_aggregated.csv\", \"receptor\": BRAINMAP_DIR / \"receptor_density_Yeo17_aggregated.csv\", }",
+      "cells": [
+        172,
+        198
+      ]
+    },
+    {
+      "variable": "BLUE_CASE_GT_HC",
+      "expression": "\"#2166AC\"",
+      "cells": [
+        144,
+        145
+      ]
+    },
+    {
+      "variable": "BLUE_CMAP",
+      "expression": "colormaps.get_cmap(\"Blues\")",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "BLUE_HC_GT_CASE",
+      "expression": "\"#2166AC\"",
+      "cells": [
+        143,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "BRAINMAPS_DIR",
+      "expression": "f\"{BASE_DIR}/brainmaps\"",
+      "cells": [
+        156
+      ]
+    },
+    {
+      "variable": "BRAINMAP_DIR",
+      "expression": "DRIVE_BASE / \"brainmaps\" / \"yeo7to17_100ROI_processed\"",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "BRAINMAP_DIR",
+      "expression": "Path( \"<GOOGLE_DRIVE_ROOT>/brainmaps/yeo7to17_100ROI_processed\" )",
+      "cells": [
+        160
+      ]
+    },
+    {
+      "variable": "BRAINMAP_DIR",
+      "expression": "Path(\"<GOOGLE_DRIVE_ROOT>/brainmaps/yeo7to17_100ROI_processed\")",
+      "cells": [
+        172,
+        179
+      ]
+    },
+    {
+      "variable": "BRAIN_INSET_SIZE",
+      "expression": "0.095",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "BRAIN_INSET_SIZE",
+      "expression": "0.105",
+      "cells": [
+        143
+      ]
+    },
+    {
+      "variable": "BRAIN_INSET_SIZE",
+      "expression": "0.118",
+      "cells": [
+        144,
+        145,
+        146
+      ]
+    },
+    {
+      "variable": "BRAIN_NUDGE",
+      "expression": "{ \"DefaultC\": (0.00, -0.025), \"VisCent\": (0.00, -0.020), \"DefaultB\": (-0.015, -0.015), \"VisPeri\": (0.015, 0.000), \"SomMotA\": (0.015, 0.000), \"SomMotB\": (0.015, 0.000), \"DorsAttnA\": (0.010, -0.005), \"DorsAttnB\": (0.005, -0.010), \"SalVentAttnA\": (0.000, -0.015), \"SalVentAttnB\": (0.000, -0.015), \"LimbicA\": (0.000, -0.015), \"LimbicB\": (-0.005, -0.015), \"ContA\": (-0.010, -0.005), \"ContB\": (-0.015, 0.000), \"ContC\": (-0.015, 0.000), \"TempPar\": (-0.015, 0.000), \"DefaultA\": (-0.015, 0.000), }",
+      "cells": [
+        143
+      ]
+    },
+    {
+      "variable": "BRAIN_NUDGE",
+      "expression": "{ \"DefaultC\": (0.000, -0.060), \"VisCent\": (0.030, -0.035), \"DefaultB\": (-0.035, -0.035), \"VisPeri\": (0.050, 0.000), \"SomMotA\": (0.050, 0.000), \"SomMotB\": (0.050, -0.005), \"DorsAttnA\": (0.040, -0.010), \"DorsAttnB\": (0.030, -0.015), \"SalVentAttnA\": (0.015, -0.020), \"SalVentAttnB\": (0.000, -0.020), \"LimbicA\": (-0.010, -0.020), \"LimbicB\": (-0.020, -0.015), \"ContA\": (-0.035, -0.010), \"ContB\": (-0.045, 0.000), \"ContC\": (-0.050, 0.000), \"TempPar\": (-0.050, 0.005), \"DefaultA\": (-0.045, 0.010), }",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "BRAIN_NUDGE",
+      "expression": "{ \"DefaultC\": (0.000, -0.060), \"VisCent\": (0.045, -0.040), \"DefaultB\": (-0.045, -0.040), \"VisPeri\": (0.055, -0.005), \"SomMotA\": (0.060, 0.000), \"SomMotB\": (0.060, 0.000), \"DorsAttnA\": (0.045, -0.010), \"DorsAttnB\": (0.035, -0.015), \"SalVentAttnA\": (0.020, -0.020), \"SalVentAttnB\": (0.005, -0.020), \"LimbicA\": (-0.005, -0.020), \"LimbicB\": (-0.020, -0.018), \"ContA\": (-0.040, -0.010), \"ContB\": (-0.055, -0.005), \"ContC\": (-0.060, 0.000), \"TempPar\": (-0.060, 0.005), \"DefaultA\": (-0.055, 0.010), }",
+      "cells": [
+        144,
+        145,
+        146
+      ]
+    },
+    {
+      "variable": "BRAIN_RADIUS",
+      "expression": "0.445",
+      "cells": [
+        144,
+        145,
+        146
+      ]
+    },
+    {
+      "variable": "BRAIN_RADIUS",
+      "expression": "0.455",
+      "cells": [
+        143
+      ]
+    },
+    {
+      "variable": "BRAIN_RADIUS",
+      "expression": "0.525",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "CBAR_H",
+      "expression": "0.54",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "CBAR_W",
+      "expression": "0.018",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "CBAR_X",
+      "expression": "0.83",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "CBAR_Y",
+      "expression": "0.23",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "CDR_COL",
+      "expression": "\"cdr_glb_score\"",
+      "cells": [
+        8,
+        16,
+        124,
+        186,
+        192,
+        194,
+        198
+      ]
+    },
+    {
+      "variable": "CELL_CSV",
+      "expression": "BRAINMAP_DIR / \"celltype_density_Yeo17_aggregated.csv\"",
+      "cells": [
+        160
+      ]
+    },
+    {
+      "variable": "CENTILOID_COL",
+      "expression": "\"pet_cl_refwc_gca_gaain\"",
+      "cells": [
+        16,
+        124,
+        186,
+        192,
+        194,
+        198
+      ]
+    },
+    {
+      "variable": "CI",
+      "expression": "95",
+      "cells": [
+        74,
+        92,
+        94
+      ]
+    },
+    {
+      "variable": "CI_ALPHA",
+      "expression": "0.18",
+      "cells": [
+        74
+      ]
+    },
+    {
+      "variable": "CL_CUTOFF",
+      "expression": "24",
+      "cells": [
+        133
+      ]
+    },
+    {
+      "variable": "CL_CUTOFF",
+      "expression": "24.0",
+      "cells": [
+        195,
+        196
+      ]
+    },
+    {
+      "variable": "CL_THRESHOLD",
+      "expression": "24",
+      "cells": [
+        124
+      ]
+    },
+    {
+      "variable": "CMAP",
+      "expression": "\"rainbow\"",
+      "cells": [
+        27,
+        28
+      ]
+    },
+    {
+      "variable": "CMAP",
+      "expression": "plt.cm.viridis",
+      "cells": [
+        106,
+        107
+      ]
+    },
+    {
+      "variable": "CMAP_CONN",
+      "expression": "\"coolwarm\"",
+      "cells": [
+        22
+      ]
+    },
+    {
+      "variable": "CMAP_DIFF",
+      "expression": "\"BuPu\"",
+      "cells": [
+        22
+      ]
+    },
+    {
+      "variable": "CMAP_NAME",
+      "expression": "\"coolwarm\"",
+      "cells": [
+        113
+      ]
+    },
+    {
+      "variable": "COGNITION_COL",
+      "expression": "\"mmse_score\"",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "COLORBAR_LABEL",
+      "expression": "\"\u0394 Strength (z) vs < -15\"",
+      "cells": [
+        27,
+        28
+      ]
+    },
+    {
+      "variable": "COLOR_BETWEEN",
+      "expression": "\"#001991\"",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "COLOR_ENTROPY",
+      "expression": "\"#F00C73\"",
+      "cells": [
+        46,
+        47,
+        74
+      ]
+    },
+    {
+      "variable": "COLOR_KLS",
+      "expression": "\"#170CF0\"",
+      "cells": [
+        46,
+        47,
+        74
+      ]
+    },
+    {
+      "variable": "COLOR_WITHIN",
+      "expression": "\"#001991\"",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "COL_CDR",
+      "expression": "\"cdr_glb_score\"",
+      "cells": [
+        133
+      ]
+    },
+    {
+      "variable": "COL_CL",
+      "expression": "\"pet_cl_refwc_gca_gaain\"",
+      "cells": [
+        133
+      ]
+    },
+    {
+      "variable": "COL_I",
+      "expression": "\"label_i\"",
+      "cells": [
+        140,
+        143,
+        144,
+        145,
+        146
+      ]
+    },
+    {
+      "variable": "COL_J",
+      "expression": "\"label_j\"",
+      "cells": [
+        140,
+        143,
+        144,
+        145,
+        146
+      ]
+    },
+    {
+      "variable": "CONT_YMIN",
+      "expression": "-4.0",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "CORE_VARIABLES",
+      "expression": "[ SUBJECT_COL, AGE_COL, SEX_COL, TRACER_COL, SITE_COL, CDR_COL, CENTILOID_COL, ]",
+      "cells": [
+        194
+      ]
+    },
+    {
+      "variable": "CSV_ENT",
+      "expression": "\"onset_node_entropy_kls.csv\"",
+      "cells": [
+        106,
+        107
+      ]
+    },
+    {
+      "variable": "CSV_KLS",
+      "expression": "\"onset_node_mean_kls.csv\"",
+      "cells": [
+        106,
+        107
+      ]
+    },
+    {
+      "variable": "CUT_COORDS",
+      "expression": "[-50, -25, 0, 25, 50]",
+      "cells": [
+        168
+      ]
+    },
+    {
+      "variable": "DEDUP_UNDIRECTED",
+      "expression": "True",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "DEFAULT_COLOR",
+      "expression": "\"lightgray\"",
+      "cells": [
+        173,
+        174,
+        175,
+        176,
+        178,
+        179,
+        181,
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "DEFAULT_LABEL_COLOR",
+      "expression": "\"black\"",
+      "cells": [
+        174,
+        175,
+        176,
+        178,
+        181,
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "DEFAULT_OUT_DIR_COLAB",
+      "expression": "Path( \"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results/Fig2/output3/\" )",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "DEFAULT_OUT_DIR_HPC",
+      "expression": "Path(\"<PROJECT_ROOT>/outputs/Fig2/output3\")",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "DELTA_COL",
+      "expression": "\"delta_r_EarlyAD_minus_Healthy\"",
+      "cells": [
+        179
+      ]
+    },
+    {
+      "variable": "DELTA_COL",
+      "expression": "f\"delta_r_{GROUP_B}_minus_{GROUP_A}\"",
+      "cells": [
+        174,
+        175,
+        176,
+        178,
+        181,
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "DIFF_CMAP",
+      "expression": "\"BuPu\"",
+      "cells": [
+        15,
+        17
+      ]
+    },
+    {
+      "variable": "DIFF_MATRIX_VMAX",
+      "expression": "float(np.nanmax(M_DIFF))",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "DIFF_MATRIX_VMIN",
+      "expression": "float(np.nanmin(M_DIFF))",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "DIFF_SIGNED_CMAP",
+      "expression": "\"BuPu\"",
+      "cells": [
+        15
+      ]
+    },
+    {
+      "variable": "DIFF_SIGNED_LEVELS",
+      "expression": "np.array([-0.30, -0.18, -0.06, 0.06, 0.18, 0.30])",
+      "cells": [
+        15
+      ]
+    },
+    {
+      "variable": "DIFF_SURF_VMAX",
+      "expression": "float(np.nanmax(roi_diff_abs))",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "DIFF_SURF_VMIN",
+      "expression": "float(np.nanmin(roi_diff_abs))",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "DISPLAY_BINS",
+      "expression": "[\"-10 to -5\", \"-5 to 0\", \"0 to 5\", \"5 to 10\", \"10 to 15\"]",
+      "cells": [
+        22
+      ]
+    },
+    {
+      "variable": "DISPLAY_BINS",
+      "expression": "[\"-15 to -10\",\"-10 to -5\",\"-5 to 0\",\"0 to 5\",\"5 to 10\",\"10 to 15\"]",
+      "cells": [
+        20
+      ]
+    },
+    {
+      "variable": "DISPLAY_BINS",
+      "expression": "[\"[-15,-10)\", \"[-10,-5)\", \"[-5,0)\", \"[0,5)\", \"[5,10)\", \"[10,15]\"]",
+      "cells": [
+        24
+      ]
+    },
+    {
+      "variable": "DO_EDGE_LEVEL_SIGNIF_DROP",
+      "expression": "False",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "variable": "DPI",
+      "expression": "300",
+      "cells": [
+        28
+      ]
+    },
+    {
+      "variable": "DRIVE_BASE",
+      "expression": "Path(\"<GOOGLE_DRIVE_ROOT>\")",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "DROPPED_CSV",
+      "expression": "\"staging_dropped_df.csv\"",
+      "cells": [
+        8
+      ]
+    },
+    {
+      "variable": "DYNAMIC_GRAPH_PROPERTIES",
+      "expression": "[ { \"label\": \"Betweenness\", \"folder\": \"avg_betweenness_100\", \"filename_candidates\": [ \"predicted_betweenness_statsmodels.csv\", \"predicted_avg_betweenness_statsmodels.csv\", ], }, { \"label\": \"Participation coefficient\", \"folder\": \"avg_participation_coeff_100\", \"filename_candidates\": [ \"predicted_participation_coeff_statsmodels.csv\", \"predicted_avg_participation_coeff_statsmodels.csv\", ], }, ]",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "E.dropna(subset=[\"label_i\", \"label_j\", EFFECT_COL, \"q\"]).copy()",
+      "cells": [
+        149
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "E.dropna(subset=[\"net_i\", \"net_j\"]).copy()",
+      "cells": [
+        149
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "E.dropna(subset=[COL_I, COL_J, QCOL, effect_col]).copy()",
+      "cells": [
+        140,
+        143,
+        144,
+        145,
+        146
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "E.dropna(subset=[QCOL, EFFECT_COL, NET_I_COL, NET_J_COL]).copy()",
+      "cells": [
+        150
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "E.dropna(subset=[QCOL, effect_col, NET_I_COL, NET_J_COL]).copy()",
+      "cells": [
+        147
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "E.sample(frac=1.0, random_state=RANDOM_SEED).reset_index(drop=True)",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "E.sort_values([QCOL, \"abs_r\"], ascending=[True, False]) .drop_duplicates(\"edge_key\", keep=\"first\") .copy()",
+      "cells": [
+        143,
+        144,
+        145,
+        146
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "E[ E[\"net_i\"].isin(NET_ORDER) & E[\"net_j\"].isin(NET_ORDER) ].copy()",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "E[ E[NET_I_COL].isin(NET_ORDER) & E[NET_J_COL].isin(NET_ORDER) ].copy()",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "E[E[\"net_i\"].isin(NET_ORDER) & E[\"net_j\"].isin(NET_ORDER)].copy()",
+      "cells": [
+        143,
+        144,
+        145,
+        146
+      ]
+    },
+    {
+      "variable": "E",
+      "expression": "edges.copy()",
+      "cells": [
+        140,
+        143,
+        144,
+        145,
+        146,
+        147,
+        149,
+        150
+      ]
+    },
+    {
+      "variable": "EDGES_CSV",
+      "expression": "FIG1_DIR / \"edgewise_stats_unique_undirected_HC_vs_EarlyAD.csv\"",
+      "cells": [
+        134
+      ]
+    },
+    {
+      "variable": "EDGES_CSV",
+      "expression": "Path(BASE) / \"stats\" / \"edges_mwu_wide\" / \"edges_mwu_bh_all.csv\"",
+      "cells": [
+        135,
+        152
+      ]
+    },
+    {
+      "variable": "EDGE_PREFIXES",
+      "expression": "(\"LH_\", \"RH_\")",
+      "cells": [
+        133
+      ]
+    },
+    {
+      "variable": "EDGE_THRESHOLD",
+      "expression": "0",
+      "cells": [
+        152
+      ]
+    },
+    {
+      "variable": "EDGE_VALUE_GAIN",
+      "expression": "1.5",
+      "cells": [
+        152
+      ]
+    },
+    {
+      "variable": "EFFECT_COL",
+      "expression": "\"rank_biserial_r\"",
+      "cells": [
+        134,
+        135,
+        149,
+        150,
+        152
+      ]
+    },
+    {
+      "variable": "EFFECT_COL_CANDIDATES",
+      "expression": "[ \"r_rb\", \"rank_biserial\", \"rank_biserial_r\", \"effect_size\", \"r\", \"rb\", \"rank_biserial_correlation\" ]",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147
+      ]
+    },
+    {
+      "variable": "EFFECT_COL_CANDIDATES",
+      "expression": "[ \"rank_biserial_r\", \"r_rb\", \"rank_biserial\", \"rank_biserial_correlation\", \"effect_size\", \"r\", \"rb\", ]",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "ENTROPY_BASE2",
+      "expression": "True",
+      "cells": [
+        46
+      ]
+    },
+    {
+      "variable": "ENTROPY_EPS",
+      "expression": "1e-12",
+      "cells": [
+        46,
+        192
+      ]
+    },
+    {
+      "variable": "ENT_BINS",
+      "expression": "30",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "ENT_EPS",
+      "expression": "1e-12",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "ENT_RANGE",
+      "expression": "(0.0, 1.0)",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "EPS",
+      "expression": "1e-12",
+      "cells": [
+        47,
+        72,
+        74,
+        94,
+        98,
+        111,
+        115,
+        116,
+        122
+      ]
+    },
+    {
+      "variable": "ESTDTT0_COL",
+      "expression": "\"estdtt0\"",
+      "cells": [
+        25,
+        30,
+        31
+      ]
+    },
+    {
+      "variable": "EST_COL",
+      "expression": "\"estdtt0\"",
+      "cells": [
+        8,
+        27,
+        28,
+        29,
+        105,
+        112,
+        113,
+        186
+      ]
+    },
+    {
+      "variable": "FEATURE_CHUNK_SIZE",
+      "expression": "128",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "FEATURE_ORDER",
+      "expression": "feature_order_df[\"feature_key\"].tolist()",
+      "cells": [
+        173,
+        179
+      ]
+    },
+    {
+      "variable": "FEATURE_ORDER_A",
+      "expression": "feature_order_A_df[\"feature_key\"] .tolist()",
+      "cells": [
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "FEATURE_ORDER_A",
+      "expression": "feature_order_A_df[\"feature_key\"].tolist()",
+      "cells": [
+        174,
+        175,
+        176,
+        178,
+        181
+      ]
+    },
+    {
+      "variable": "FEATURE_ORDER_A_SIG",
+      "expression": "feature_order_A_sig[\"feature_key\"].tolist()",
+      "cells": [
+        180
+      ]
+    },
+    {
+      "variable": "FEATURE_ORDER_B",
+      "expression": "FEATURE_ORDER_B + missing_from_betw",
+      "cells": [
+        174
+      ]
+    },
+    {
+      "variable": "FEATURE_ORDER_B",
+      "expression": "FEATURE_ORDER_B + missing_from_sort_gp",
+      "cells": [
+        175,
+        176,
+        178,
+        181
+      ]
+    },
+    {
+      "variable": "FEATURE_ORDER_B",
+      "expression": "betw_order_df[\"feature_key\"].tolist()",
+      "cells": [
+        174
+      ]
+    },
+    {
+      "variable": "FEATURE_ORDER_B",
+      "expression": "sort_order_df[\"feature_key\"] .tolist()",
+      "cells": [
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "FEATURE_ORDER_B",
+      "expression": "sort_order_df[\"feature_key\"].tolist()",
+      "cells": [
+        175,
+        176,
+        178,
+        181
+      ]
+    },
+    {
+      "variable": "FEATURE_ORDER_B_SIG",
+      "expression": "sort_order_sig[\"feature_key\"].tolist()",
+      "cells": [
+        180
+      ]
+    },
+    {
+      "variable": "FIG1_DIR",
+      "expression": "Path(BASE) / \"stats\" / \"fig1_recomputed_complete_groups\"",
+      "cells": [
+        125,
+        134
+      ]
+    },
+    {
+      "variable": "FIG4_BASE",
+      "expression": "PROJECT_BASE / \"Fig4\"",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "FIG4_BASE",
+      "expression": "Path(\"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results/Fig4\")",
+      "cells": [
+        158,
+        159,
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        170
+      ]
+    },
+    {
+      "variable": "FIGSIZE",
+      "expression": "(10, 10)",
+      "cells": [
+        143
+      ]
+    },
+    {
+      "variable": "FIGSIZE",
+      "expression": "(14, 10)",
+      "cells": [
+        113
+      ]
+    },
+    {
+      "variable": "FIGSIZE",
+      "expression": "(16, 16)",
+      "cells": [
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "FIGURE_DIR",
+      "expression": "OUT_DIR / \"figures\"",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "FIG_DPI",
+      "expression": "300",
+      "cells": [
+        113
+      ]
+    },
+    {
+      "variable": "FIG_H",
+      "expression": "4.8",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "FIG_OUTDIR",
+      "expression": "OUTDIR / \"figure1_A4_600dpi_final\"",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "FIG_PDF",
+      "expression": "FIG_OUTDIR / \"Figure1_Controls_EarlyAD_KLS_A4_vector.pdf\"",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "FIG_PNG",
+      "expression": "FIG_OUTDIR / \"Figure1_Controls_EarlyAD_KLS_A4_600dpi.png\"",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "FIG_TIFF",
+      "expression": "FIG_OUTDIR / \"Figure1_Controls_EarlyAD_KLS_A4_600dpi.tiff\"",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "FIG_W",
+      "expression": "18",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "FIG_WIDTH_PER_BIN",
+      "expression": "2.6",
+      "cells": [
+        20
+      ]
+    },
+    {
+      "variable": "FRAME_DURATION",
+      "expression": "2.0",
+      "cells": [
+        27
+      ]
+    },
+    {
+      "variable": "GENE_CSV",
+      "expression": "BRAINMAP_DIR / \"gene-expression_Yeo17_aggregated.csv\"",
+      "cells": [
+        160
+      ]
+    },
+    {
+      "variable": "GLOBAL_CANDIDATES",
+      "expression": "[ \"avg_strength\", \"avg_betweenness\", \"avg_clustering_coef\", \"global_efficiency\", ]",
+      "cells": [
+        195
+      ]
+    },
+    {
+      "variable": "GLOBAL_METRICS",
+      "expression": "[c for c in GLOBAL_CANDIDATES if c in df.columns]",
+      "cells": [
+        195
+      ]
+    },
+    {
+      "variable": "GP_CHECK_COL",
+      "expression": "\"avg_betweenness\"",
+      "cells": [
+        8,
+        186,
+        192
+      ]
+    },
+    {
+      "variable": "GRAPH_METRICS",
+      "expression": "[ \"avg_strength\", \"avg_betweenness\", \"avg_clustering_coef\", \"global_efficiency\", ]",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "GRAPH_PROPERTIES",
+      "expression": "[ { \"label\": \"Betweenness\", \"folder\": \"avg_betweenness_100\", \"file\": \"predicted_betweenness_statsmodels.csv\", }, { \"label\": \"Participation coefficient\", \"folder\": \"avg_participation_coeff_100\", \"file\": \"predicted_participation_coeff_statsmodels.csv\", }, ]",
+      "cells": [
+        167,
+        168
+      ]
+    },
+    {
+      "variable": "GRAPH_PROPERTIES",
+      "expression": "[ { \"label\": \"Betweenness\", \"prefix_candidates\": [ \"betweenness_17Networks_\", \"betweenness_centrality_17Networks_\", ], \"out_file\": \"betweenness_group_vectors.csv\", }, { \"label\": \"Participation coefficient\", \"prefix_candidates\": [ \"participation_coeff_17Networks_\", \"participation_coefficient_17Networks_\", \"participation_17Networks_\", ], \"out_file\": \"participation_group_vectors.csv\", }, { \"label\": \"Clustering coefficient\", \"prefix_candidates\": [ \"clustering_coeff_17Networks_\", \"clustering_coefficient_17Networks_\", \"avg_clustering_coef_17Networks_\", \"clustering_17Networks_\", ], \"out_file\": \"clustering_group_vectors.csv\", }, { \"label\": \"Strength\", \"prefix_candidates\": [ \"strength_17Networks_\", \"nodal_strength_17Networks_\", \"avg_strength_17Networks_\", ], \"out_file\": \"strength_group_vectors.csv\", }, ]",
+      "cells": [
+        170
+      ]
+    },
+    {
+      "variable": "GRAPH_PROPERTIES",
+      "expression": "[ { \"label\": \"strength\", \"folder\": \"avg_strength_100\", \"filename_candidates\": [ \"predicted_strength_statsmodels.csv\", \"predicted_avg_strength_statsmodels.csv\", ], }, { \"label\": \"betweenness\", \"folder\": \"avg_betweenness_100\", \"filename_candidates\": [ \"predicted_betweenness_statsmodels.csv\", \"predicted_avg_betweenness_statsmodels.csv\", ], }, { \"label\": \"clustering_coeff\", \"folder\": \"avg_clustering_coef_100\", \"filename_candidates\": [ \"predicted_clustering_coeff_statsmodels.csv\", \"predicted_avg_clustering_coef_statsmodels.csv\", ], }, { \"label\": \"participation_coeff\", \"folder\": \"avg_participation_coeff_100\", \"filename_candidates\": [ \"predicted_participation_coeff_statsmodels.csv\", \"predicted_avg_participation_coeff_statsmodels.csv\", ], }, { \"label\": \"degree\", \"folder\": \"degree_mean_100\", \"filename_candidates\": [ \"predicted_degree_statsmodels.csv\", \"predicted_degree_mean_statsmodels.csv\", ], }, ]",
+      "cells": [
+        160
+      ]
+    },
+    {
+      "variable": "GRAPH_PROPERTIES",
+      "expression": "[ { \"label\": \"strength\", \"folder\": \"avg_strength_100\", \"stem\": \"predicted_strength_statsmodels\", \"prefix\": \"strength_\", }, { \"label\": \"betweenness\", \"folder\": \"avg_betweenness_100\", \"stem\": \"predicted_betweenness_statsmodels\", \"prefix\": \"betweenness_\", }, { \"label\": \"clustering_coeff\", \"folder\": \"avg_clustering_coef_100\", \"stem\": \"predicted_clustering_coeff_statsmodels\", \"prefix\": \"clustering_coeff_\", }, { \"label\": \"participation_coeff\", \"folder\": \"avg_participation_coeff_100\", \"stem\": \"predicted_participation_coeff_statsmodels\", \"prefix\": \"participation_coeff_\", }, { \"label\": \"degree\", \"folder\": \"degree_mean_100\", \"stem\": \"predicted_degree_statsmodels\", \"prefix\": \"degree_\", }, ]",
+      "cells": [
+        159
+      ]
+    },
+    {
+      "variable": "GRAPH_PROPERTIES",
+      "expression": "[ {\"label\": \"Betweenness\", \"folder\": \"avg_betweenness_100\"}, {\"label\": \"Participation coefficient\", \"folder\": \"avg_participation_coeff_100\"}, ]",
+      "cells": [
+        164
+      ]
+    },
+    {
+      "variable": "GRAPH_PROPERTIES",
+      "expression": "[ {\"label\": \"Participation coefficient\", \"folder\": \"avg_participation_coeff_100\"}, {\"label\": \"Betweenness\", \"folder\": \"avg_betweenness_100\"}, ]",
+      "cells": [
+        165,
+        166
+      ]
+    },
+    {
+      "variable": "GRAPH_PROPERTIES",
+      "expression": "[ {\"label\": \"Strength\", \"folder\": \"avg_strength_100\"}, {\"label\": \"Betweenness\", \"folder\": \"avg_betweenness_100\"}, {\"label\": \"Clustering coefficient\", \"folder\": \"avg_clustering_coef_100\"}, {\"label\": \"Participation coefficient\", \"folder\": \"avg_participation_coeff_100\"}, {\"label\": \"Degree\", \"folder\": \"degree_mean_100\"}, ]",
+      "cells": [
+        161,
+        162
+      ]
+    },
+    {
+      "variable": "GRAPH_PROPERTY_ALIASES",
+      "expression": "{ \"Participation coefficient\": [ \"Participation coefficient\", \"participation coefficient\", \"participation_coef\", \"participation_coefficient\", \"participation\", ], \"Betweenness\": [ \"Betweenness\", \"betweenness\", \"betweenness centrality\", \"betweenness_centrality\", ], \"Clustering coefficient\": [ \"Clustering coefficient\", \"clustering coefficient\", \"clustering_coef\", \"clustering_coefficient\", \"avg_clustering_coef\", \"clustering\", ], \"Strength\": [ \"Strength\", \"strength\", \"nodal strength\", \"nodal_strength\", \"avg_strength\", ], }",
+      "cells": [
+        178
+      ]
+    },
+    {
+      "variable": "GRID",
+      "expression": "np.linspace(-15, 15, 800)",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "GROUP_A",
+      "expression": "\"Healthy\"",
+      "cells": [
+        174,
+        175,
+        176,
+        178,
+        179,
+        181,
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "GROUP_B",
+      "expression": "\"EarlyAD\"",
+      "cells": [
+        174,
+        175,
+        176,
+        178,
+        179,
+        181,
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "GROUP_CMAP",
+      "expression": "\"coolwarm\"",
+      "cells": [
+        15,
+        17
+      ]
+    },
+    {
+      "variable": "GROUP_DEFINITIONS",
+      "expression": "{ \"Healthy\": { \"cdr_col\": \"cdr_glb_score\", \"cdr_value\": 0, \"cl_col\": \"pet_cl_refwc_gca_gaain\", \"cl_operator\": \"<\", \"cl_value\": 24, }, \"EarlyAD\": { \"cdr_col\": \"cdr_glb_score\", \"cdr_value\": 0.5, \"cl_col\": \"pet_cl_refwc_gca_gaain\", \"cl_operator\": \">=\", \"cl_value\": 24, }, }",
+      "cells": [
+        170
+      ]
+    },
+    {
+      "variable": "GROUP_GRAPH_PROPERTIES",
+      "expression": "[ { \"label\": \"Strength\", \"prefix_candidates\": [ \"strength_17Networks_\", \"nodal_strength_17Networks_\", \"avg_strength_17Networks_\", ], }, { \"label\": \"Betweenness\", \"prefix_candidates\": [ \"betweenness_17Networks_\", \"betweenness_centrality_17Networks_\", ], }, { \"label\": \"Clustering coefficient\", \"prefix_candidates\": [ \"clustering_coeff_17Networks_\", \"clustering_coefficient_17Networks_\", \"avg_clustering_coef_17Networks_\", \"clustering_17Networks_\", ], }, { \"label\": \"Participation coefficient\", \"prefix_candidates\": [ \"participation_coeff_17Networks_\", \"participation_coefficient_17Networks_\", \"participation_17Networks_\", ], }, ]",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "GROUP_LEVELS",
+      "expression": "np.linspace(0.0, 1.0, 6)",
+      "cells": [
+        15
+      ]
+    },
+    {
+      "variable": "GROUP_MATRIX_VMAX",
+      "expression": "1.0",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "GROUP_MATRIX_VMIN",
+      "expression": "0.0",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "GROUP_SURF_VMAX",
+      "expression": "float(np.nanmax([np.nanmax(roi_controls), np.nanmax(roi_earlyad)]))",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "GROUP_SURF_VMIN",
+      "expression": "float(np.nanmin([np.nanmin(roi_controls), np.nanmin(roi_earlyad)]))",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "HEMI_ORDER",
+      "expression": "[\"LH\", \"RH\"]",
+      "cells": [
+        10,
+        20
+      ]
+    },
+    {
+      "variable": "IDX_PAIR_RE",
+      "expression": "re.compile(r\"^0*(\\d+)[_\\-]0*(\\d+)$\")",
+      "cells": [
+        22,
+        28
+      ]
+    },
+    {
+      "variable": "IDX_PAIR_RE",
+      "expression": "re.compile(r'^0*(\\d+)[_\\-]0*(\\d+)$')",
+      "cells": [
+        16,
+        20,
+        27,
+        112,
+        113
+      ]
+    },
+    {
+      "variable": "INPUT_CSV",
+      "expression": "FIG4_BASE / \"group_graph_metrics_concat.csv\"",
+      "cells": [
+        159
+      ]
+    },
+    {
+      "variable": "KEEP_ALL_ROBUST_CELLTYPES",
+      "expression": "True",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "LABELS_CSV",
+      "expression": "None",
+      "cells": [
+        27,
+        28
+      ]
+    },
+    {
+      "variable": "LABELS_FILE",
+      "expression": "None",
+      "cells": [
+        20,
+        22
+      ]
+    },
+    {
+      "variable": "LABELS_PATH",
+      "expression": "\"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results/6_df_clinical_baseline_sila_gp_kls_LABELS.csv\"",
+      "cells": [
+        42,
+        43,
+        73
+      ]
+    },
+    {
+      "variable": "LATE_BIN",
+      "expression": "\"[10,15]\"",
+      "cells": [
+        112,
+        113
+      ]
+    },
+    {
+      "variable": "LEG_X",
+      "expression": "0.865",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "LEG_Y",
+      "expression": "0.52",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "LINEWIDTH",
+      "expression": "2.8",
+      "cells": [
+        46,
+        47,
+        74
+      ]
+    },
+    {
+      "variable": "LINEWIDTH",
+      "expression": "4.0",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "LINE_STYLES",
+      "expression": "[\"-\", \"--\", \"-.\", \":\"]",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "LOWESS_FRAC",
+      "expression": "0.25",
+      "cells": [
+        104
+      ]
+    },
+    {
+      "variable": "LW_ALL",
+      "expression": "1.0",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "variable": "LW_GRAY",
+      "expression": "0.8",
+      "cells": [
+        30,
+        31
+      ]
+    },
+    {
+      "variable": "LW_MAX",
+      "expression": "6.0",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "LW_MIN",
+      "expression": "0.5",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "LW_NS",
+      "expression": "0.15",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "LW_POWER",
+      "expression": "1.2",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "LW_SIG",
+      "expression": "2.4",
+      "cells": [
+        30,
+        31
+      ]
+    },
+    {
+      "variable": "LW_T1",
+      "expression": "0.60",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "LW_T2",
+      "expression": "1.00",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "LW_T3",
+      "expression": "1.60",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "LW_TOP",
+      "expression": "2.8",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "variable": "M1",
+      "expression": "smf.ols( formula_M1, data=cognitive_df, ).fit()",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "M2",
+      "expression": "smf.ols( formula_M2, data=cognitive_df, ).fit()",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "M2_HC3",
+      "expression": "smf.ols( formula_M2, data=cognitive_df, ).fit(cov_type=\"HC3\")",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "M3",
+      "expression": "smf.ols( formula_M3, data=cognitive_df, ).fit()",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "M4",
+      "expression": "smf.ols( formula_M4, data=cognitive_df, ).fit()",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "M4_HC3",
+      "expression": "smf.ols( formula_M4, data=cognitive_df, ).fit(cov_type=\"HC3\")",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "MARKERS",
+      "expression": "[\"o\", \"s\", \"^\", \"D\", \"v\", \"P\", \"X\", \"<\", \">\", \"h\"]",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "MARKERSIZE",
+      "expression": "7",
+      "cells": [
+        47,
+        74
+      ]
+    },
+    {
+      "variable": "MASTER_CSV",
+      "expression": "\"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results/6_df_clinical_baseline_sila_gp_kls_LABELS.csv\"",
+      "cells": [
+        124
+      ]
+    },
+    {
+      "variable": "MASTER_CSV",
+      "expression": "BASE / ( \"6_df_clinical_baseline_sila_gp_kls_LABELS_dropped.csv\" )",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "MASTER_CSV",
+      "expression": "f\"{BASE}/6_df_clinical_baseline_sila_gp_kls_LABELS.csv\"",
+      "cells": [
+        16,
+        25,
+        30,
+        31
+      ]
+    },
+    {
+      "variable": "MASTER_CSV",
+      "expression": "os.path.join( BASE, \"6_df_clinical_baseline_sila_gp_kls_LABELS.csv\", )",
+      "cells": [
+        194
+      ]
+    },
+    {
+      "variable": "MASTER_CSV",
+      "expression": "os.path.join(BASE, \"6_df_clinical_baseline_sila_gp_kls_LABELS.csv\")",
+      "cells": [
+        10,
+        195,
+        196
+      ]
+    },
+    {
+      "variable": "MASTER_CSV",
+      "expression": "os.path.join(BASE, \"6_df_clinical_baseline_sila_gp_kls_LABELS_dropped.csv\")",
+      "cells": [
+        6,
+        8
+      ]
+    },
+    {
+      "variable": "MAX_ALPHA_BLUE",
+      "expression": "0.72",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "MAX_ALPHA_RED",
+      "expression": "0.98",
+      "cells": [
+        143
+      ]
+    },
+    {
+      "variable": "MAX_ALPHA_RED",
+      "expression": "1.00",
+      "cells": [
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "MAX_LW",
+      "expression": "3.2",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "META_COLS",
+      "expression": "[ \"subject_id\", \"session_id\", \"amypad_id\", \"age\", \"sex\", \"estdtt0\", \"pet_cl_refwc_gca_gaain\", \"cdr_glb_score\", ]",
+      "cells": [
+        158
+      ]
+    },
+    {
+      "variable": "META_COLS",
+      "expression": "[\"subject_id\", \"session_id\", \"amypad_id\", \"age\", \"sex\", \"estdtt0\"]",
+      "cells": [
+        155
+      ]
+    },
+    {
+      "variable": "MIN_ALPHA_BLUE",
+      "expression": "0.22",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "MIN_ALPHA_RED",
+      "expression": "0.55",
+      "cells": [
+        143
+      ]
+    },
+    {
+      "variable": "MIN_ALPHA_RED",
+      "expression": "0.65",
+      "cells": [
+        144,
+        145,
+        146
+      ]
+    },
+    {
+      "variable": "MIN_ALPHA_RED",
+      "expression": "0.82",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "MIN_EDGES_FOR_ENTROPY",
+      "expression": "5000",
+      "cells": [
+        72,
+        74,
+        94,
+        98
+      ]
+    },
+    {
+      "variable": "MIN_FINITE_EDGES",
+      "expression": "1000",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "MIN_LW",
+      "expression": "0.35",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "MIN_N",
+      "expression": "10",
+      "cells": [
+        111,
+        116,
+        122
+      ]
+    },
+    {
+      "variable": "MIN_N",
+      "expression": "30",
+      "cells": [
+        195
+      ]
+    },
+    {
+      "variable": "MIN_N_ANCHOR",
+      "expression": "20",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "MIN_N_BIN",
+      "expression": "20",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "MIN_N_PER_GROUP",
+      "expression": "10",
+      "cells": [
+        133
+      ]
+    },
+    {
+      "variable": "MODALITIES",
+      "expression": "[\"celltype\", \"gene\", \"receptor\"]",
+      "cells": [
+        162,
+        164
+      ]
+    },
+    {
+      "variable": "MODALITY_COLORS",
+      "expression": "{ \"celltype\": \"#0072B2\", # blue \"gene\": \"#009E73\", # bluish green \"receptor\": \"#D55E00\", # vermillion }",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "MODALITY_COLORS",
+      "expression": "{ \"celltype\": \"#4DBBD5\", \"gene\": \"#91D36E\", \"microstructure\": \"#F39B00\", \"receptor\": \"#E64B35\", }",
+      "cells": [
+        174,
+        175,
+        176,
+        178,
+        181
+      ]
+    },
+    {
+      "variable": "MODALITY_COLORS",
+      "expression": "{ \"celltype\": \"#4DBBD5\", \"gene\": \"#91D36E\", \"receptor\": \"#E64B35\", \"microstructure\": \"#F39B00\", }",
+      "cells": [
+        179
+      ]
+    },
+    {
+      "variable": "MODALITY_COLORS",
+      "expression": "{ \"celltype\": \"#4DBBD5\", \"gene\": \"#91D36E\", \"receptor\": \"#E64B35\", }",
+      "cells": [
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "MODALITY_COLORS",
+      "expression": "{ \"celltype\": \"#4DBBD5\", # blue \"gene\": \"#91D36E\", # green \"receptor\": \"#E64B35\", # red \"microstructure\": \"#F39B00\" # orange/yellow, if present }",
+      "cells": [
+        173
+      ]
+    },
+    {
+      "variable": "MODALITY_LABEL_COLORS",
+      "expression": "{ \"celltype\": \"#007A9A\", \"gene\": \"#3C8C2E\", \"microstructure\": \"#A86600\", \"receptor\": \"#B22222\", }",
+      "cells": [
+        174,
+        175,
+        176,
+        178,
+        181
+      ]
+    },
+    {
+      "variable": "MODALITY_LABEL_COLORS",
+      "expression": "{ \"celltype\": \"#007A9A\", \"gene\": \"#3C8C2E\", \"receptor\": \"#B22222\", }",
+      "cells": [
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "M_CASE",
+      "expression": "build_matrix(df_CASE, labels, cands)",
+      "cells": [
+        12
+      ]
+    },
+    {
+      "variable": "M_CASE",
+      "expression": "build_matrix(df_CASE, ordered_labels, cands)",
+      "cells": [
+        10
+      ]
+    },
+    {
+      "variable": "M_CONTROLS",
+      "expression": "M_HC",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "M_DIFF",
+      "expression": "np.abs(M_CONTROLS - M_EARLYAD)",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "M_DIFF",
+      "expression": "np.abs(M_HC - M_CASE)",
+      "cells": [
+        10,
+        12
+      ]
+    },
+    {
+      "variable": "M_EARLYAD",
+      "expression": "M_CASE",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "variable": "M_HC",
+      "expression": "build_matrix(df_HC, labels, cands)",
+      "cells": [
+        12
+      ]
+    },
+    {
+      "variable": "M_HC",
+      "expression": "build_matrix(df_HC, ordered_labels, cands)",
+      "cells": [
+        10
+      ]
+    },
+    {
+      "variable": "NETS_17",
+      "expression": "[ \"VisCent\",\"VisPeri\",\"SomMotA\",\"SomMotB\",\"DorsAttnA\",\"DorsAttnB\", \"SalVentAttnA\",\"SalVentAttnB\",\"LimbicA\",\"LimbicB\",\"ContA\",\"ContB\",\"ContC\", \"DefaultA\",\"DefaultB\",\"DefaultC\",\"TempPar\" ]",
+      "cells": [
+        25,
+        110,
+        111,
+        112,
+        113,
+        115
+      ]
+    },
+    {
+      "variable": "NETWORK_ORDER",
+      "expression": "[ \"VisCent\", \"VisPeri\", \"SomMotA\", \"SomMotB\", \"DorsAttnA\", \"DorsAttnB\", \"SalVentAttnA\", \"SalVentAttnB\", \"LimbicA\", \"LimbicB\", \"ContA\", \"ContB\", \"ContC\", \"DefaultA\", \"DefaultB\", \"DefaultC\", \"TempPar\" ]",
+      "cells": [
+        10,
+        20
+      ]
+    },
+    {
+      "variable": "NETWORK_TEMPLATE_DIR",
+      "expression": "Path(OUTDIR) / \"schaefer17_network_templates\"",
+      "cells": [
+        141
+      ]
+    },
+    {
+      "variable": "NET_COLORS",
+      "expression": "{ \"VisCent\": \"#781286\", \"VisPeri\": \"#FF0000\", \"SomMotA\": \"#4682B4\", \"SomMotB\": \"#2ACCA4\", \"DorsAttnA\": \"#4A9B3C\", \"DorsAttnB\": \"#00760E\", \"SalVentAttnA\": \"#C43AFA\", \"SalVentAttnB\": \"#FF98D5\", \"LimbicA\": \"#DCF8A4\", \"LimbicB\": \"#7A8732\", \"ContA\": \"#778CB0\", \"ContB\": \"#E69422\", \"ContC\": \"#87324A\", \"TempPar\": \"#0C30FF\", \"DefaultA\": \"#000082\", \"DefaultB\": \"#FFFF00\", \"DefaultC\": \"#CD3E4E\", }",
+      "cells": [
+        31,
+        134,
+        135
+      ]
+    },
+    {
+      "variable": "NET_COLORS",
+      "expression": "{ \"VisCent\": \"#781286\", \"VisPeri\": \"#FF0000\", \"SomMotA\": \"#4682B4\", \"SomMotB\": \"#2ACCA4\", \"DorsAttnA\": \"#4A9B3C\", \"DorsAttnB\": \"#00760E\", \"SalVentAttnA\": \"#C43AFA\", \"SalVentAttnB\": \"#FF98D5\", \"LimbicA\": \"#DCF8A4\", \"LimbicB\": \"#7A8732\", \"ContA\": \"#778CB0\", \"ContB\": \"#E69422\", \"ContC\": \"#87324A\", \"TempPar\": \"#0C30FF\", \"DefaultA\": \"#0000A3\", \"DefaultB\": \"#C9B800\", \"DefaultC\": \"#CD3E4E\", }",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "NET_COLORS",
+      "expression": "{ \"VisCent\": \"#781286\", \"VisPeri\": \"#FF0000\", \"SomMotA\": \"#4682B4\", \"SomMotB\": \"#2ACCA4\", \"DorsAttnA\": \"#4A9B3C\", \"DorsAttnB\": \"#00760E\", \"SalVentAttnA\": \"#C43AFA\", \"SalVentAttnB\": \"#FF98D5\", \"LimbicA\": \"#DCF8A4\", \"LimbicB\": \"#7A8732\", \"ContA\": \"#778CB0\", \"ContB\": \"#E69422\", \"ContC\": \"#87324A\", \"TempPar\": \"#0C30FF\", \"DefaultA\": \"#0000A3\", \"DefaultB\": \"#FFFF00\", \"DefaultC\": \"#CD3E4E\", }",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "NET_COLORS",
+      "expression": "{ \"VisCent\": \"#781286\", # 17Networks_1 \"VisPeri\": \"#FF0000\", # 17Networks_2 \"SomMotA\": \"#4682B4\", # 17Networks_3 \"SomMotB\": \"#2ACCA4\", # 17Networks_4 \"DorsAttnA\": \"#4A9B3C\", # 17Networks_5 \"DorsAttnB\": \"#00760E\", # 17Networks_6 \"SalVentAttnA\": \"#C43AFA\", # 17Networks_7 \"SalVentAttnB\": \"#FF98D5\", # 17Networks_8 \"LimbicA\": \"#DCF8A4\", # 17Networks_9 \"LimbicB\": \"#7A8732\", # 17Networks_10 \"ContA\": \"#778CB0\", # 17Networks_11 \"ContB\": \"#E69422\", # 17Networks_12 \"ContC\": \"#87324A\", # 17Networks_13 \"TempPar\": \"#0C30FF\", # 17Networks_14 \"DefaultA\": \"#000082\", # 17Networks_15 \"DefaultB\": \"#FFFF00\", # 17Networks_16 \"DefaultC\": \"#CD3E4E\", # 17Networks_17 }",
+      "cells": [
+        7,
+        25,
+        30,
+        152
+      ]
+    },
+    {
+      "variable": "NET_I_COL",
+      "expression": "\"net_i\"",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "NET_J_COL",
+      "expression": "\"net_j\"",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "NET_ORDER",
+      "expression": "[ \"VisCent\", \"VisPeri\", \"SomMotA\", \"SomMotB\", \"DorsAttnA\", \"DorsAttnB\", \"SalVentAttnA\", \"SalVentAttnB\", \"LimbicA\", \"LimbicB\", \"ContA\", \"ContB\", \"ContC\", \"TempPar\", \"DefaultA\", \"DefaultB\", \"DefaultC\" ]",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "NET_ORDER",
+      "expression": "list(NET_COLORS.keys())",
+      "cells": [
+        140,
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "NODE_KWARGS",
+      "expression": "{ \"edgecolors\": \"none\", \"linewidths\": 0, \"alpha\": 0.95 }",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "NODE_SIZE",
+      "expression": "10",
+      "cells": [
+        152
+      ]
+    },
+    {
+      "variable": "NODE_SIZE",
+      "expression": "320",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "variable": "NODE_SIZE",
+      "expression": "80",
+      "cells": [
+        106,
+        107
+      ]
+    },
+    {
+      "variable": "NS_ALPHA",
+      "expression": "0.08",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "variable": "N_BOOT",
+      "expression": "2000",
+      "cells": [
+        74,
+        92,
+        94
+      ]
+    },
+    {
+      "variable": "N_HIST_BINS",
+      "expression": "30",
+      "cells": [
+        46,
+        47,
+        72,
+        74,
+        94,
+        98,
+        192
+      ]
+    },
+    {
+      "variable": "N_PERM",
+      "expression": "10_000",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "N_ROI",
+      "expression": "100",
+      "cells": [
+        161,
+        162,
+        164,
+        165,
+        166,
+        198
+      ]
+    },
+    {
+      "variable": "ONSET_BIN",
+      "expression": "\"[0,5)\"",
+      "cells": [
+        112,
+        113
+      ]
+    },
+    {
+      "variable": "ONSET_X",
+      "expression": "0.0",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "ORDER",
+      "expression": "[ \"z_avg_strength\", \"z_avg_betweenness\", \"z_avg_clustering_coef\", \"z_global_efficiency\", \"z_centiloid\", ]",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "ORDER_BINS",
+      "expression": "[\"[-15,-10)\", \"[-10,-5)\", \"[-5,0)\", \"[0,5)\", \"[5,10)\", \"[10,15]\"]",
+      "cells": [
+        25,
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    },
+    {
+      "variable": "OUTCOMES",
+      "expression": "[ \"avg_strength\", \"avg_betweenness\", \"avg_clustering_coef\", \"global_efficiency\", ]",
+      "cells": [
+        196
+      ]
+    },
+    {
+      "variable": "OUTDIR",
+      "expression": "BASE / \"stats\" / \"reviewer2_4950_edges\"",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "OUTDIR",
+      "expression": "Path(\"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results/stats/fig1_recomputed_complete_groups\")",
+      "cells": [
+        124
+      ]
+    },
+    {
+      "variable": "OUTDIR",
+      "expression": "Path(BASE) / \"stats\" / \"fig1\"",
+      "cells": [
+        152
+      ]
+    },
+    {
+      "variable": "OUTDIR",
+      "expression": "Path(BASE) / \"stats\" / \"reviewer5_covariate_factorial\"",
+      "cells": [
+        195,
+        196
+      ]
+    },
+    {
+      "variable": "OUTDIR",
+      "expression": "Path(os.path.join(BASE, \"stats\", \"edges_mwu_wide\"))",
+      "cells": [
+        133
+      ]
+    },
+    {
+      "variable": "OUTDIR",
+      "expression": "Path(os.path.join(BASE, \"stats\", \"fig1\", \"output_final_colab\"))",
+      "cells": [
+        6
+      ]
+    },
+    {
+      "variable": "OUTDIR",
+      "expression": "Path(os.path.join(BASE, \"stats\", \"fig1\", \"output_final_colab_ordered\"))",
+      "cells": [
+        10
+      ]
+    },
+    {
+      "variable": "OUTPUT_CSV",
+      "expression": "FIG4_BASE / \"group_graph_metrics_concat.csv\"",
+      "cells": [
+        158
+      ]
+    },
+    {
+      "variable": "OUT_CSV",
+      "expression": "\"staging_df.csv\"",
+      "cells": [
+        8
+      ]
+    },
+    {
+      "variable": "OUT_CSV",
+      "expression": "FIG4_BASE / \"Table_top10_biological_associations.csv\"",
+      "cells": [
+        163
+      ]
+    },
+    {
+      "variable": "OUT_DIR",
+      "expression": "\"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results/stats/fig1\"",
+      "cells": [
+        112,
+        113
+      ]
+    },
+    {
+      "variable": "OUT_DIR",
+      "expression": "\"fig2_supp_outputs\"",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "variable": "OUT_DIR",
+      "expression": "\"fig2_supp_strength\"",
+      "cells": [
+        30,
+        31
+      ]
+    },
+    {
+      "variable": "OUT_DIR",
+      "expression": "FIG4_BASE / \"focused_betweenness_participation\"",
+      "cells": [
+        164
+      ]
+    },
+    {
+      "variable": "OUT_DIR",
+      "expression": "FIG4_BASE / \"group_level_vectors\"",
+      "cells": [
+        170
+      ]
+    },
+    {
+      "variable": "OUT_DIR",
+      "expression": "FIG4_BASE / \"predicted_topology_snapshots\"",
+      "cells": [
+        167
+      ]
+    },
+    {
+      "variable": "OUT_DIR",
+      "expression": "PROJECT_BASE / \"stats\" / \"reviewer4_spatial_nulls\"",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "OUT_DIR",
+      "expression": "Path(\"./group_bio_figures\")",
+      "cells": [
+        179
+      ]
+    },
+    {
+      "variable": "OUT_DIR",
+      "expression": "f\"{BASE}/FIG2_strength_anchored_pngs\"",
+      "cells": [
+        28
+      ]
+    },
+    {
+      "variable": "OUT_ENT",
+      "expression": "\"surface_onset_node_entropy.png\"",
+      "cells": [
+        106,
+        107
+      ]
+    },
+    {
+      "variable": "OUT_HTML",
+      "expression": "OUTDIR / f\"connectome_3D_sig_edges_top{TOP_POS}pos_top{TOP_NEG}neg_q{Q_THRESH}_{STAMP}.html\"",
+      "cells": [
+        152
+      ]
+    },
+    {
+      "variable": "OUT_HTML",
+      "expression": "Path(\"/content/connectome_3D_sig_edges.html\")",
+      "cells": [
+        153
+      ]
+    },
+    {
+      "variable": "OUT_KLS",
+      "expression": "\"surface_onset_node_mean_kls.png\"",
+      "cells": [
+        106,
+        107
+      ]
+    },
+    {
+      "variable": "OUT_PNG_1",
+      "expression": "None",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "OUT_PNG_2",
+      "expression": "None",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "OUT_PNG_3",
+      "expression": "None",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "OUT_PNG_4",
+      "expression": "None",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "OUT_ROOT",
+      "expression": "FIG4_BASE / \"0_composite_figs\"",
+      "cells": [
+        161
+      ]
+    },
+    {
+      "variable": "OUT_ROOT",
+      "expression": "FIG4_BASE / \"0_composite_figs_betweenness_participation\"",
+      "cells": [
+        165
+      ]
+    },
+    {
+      "variable": "OUT_ROOT",
+      "expression": "FIG4_BASE / \"0_composite_figs_betweenness_participation_fixed_colors\"",
+      "cells": [
+        166
+      ]
+    },
+    {
+      "variable": "OUT_XLSX",
+      "expression": "FIG4_BASE / \"Table_top10_biological_associations.xlsx\"",
+      "cells": [
+        163
+      ]
+    },
+    {
+      "variable": "PACKAGE_IMPORTS",
+      "expression": "{ \"neuromaps\": \"neuromaps\", \"brainspace\": \"brainspace\", \"nibabel\": \"nibabel\", \"statsmodels\": \"statsmodels\", }",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "PAIR_DELIMS",
+      "expression": "[\"--\", \"__\", \"_x_\", \" vs \", \" - \", \"\u2013\", \"\u2014\", \"-\"]",
+      "cells": [
+        10,
+        12,
+        133
+      ]
+    },
+    {
+      "variable": "PAIR_DELIMS",
+      "expression": "[\"--\", \"__\", \"_x_\", \" vs \", \" VS \", \" - \", \"\u2013\", \"\u2014\", \"-\"]",
+      "cells": [
+        16,
+        20,
+        22,
+        24,
+        27,
+        28,
+        112,
+        113,
+        124
+      ]
+    },
+    {
+      "variable": "PANEL_A_YLIM",
+      "expression": "(0.0, 0.4)",
+      "cells": [
+        173,
+        174,
+        175,
+        176,
+        179,
+        181
+      ]
+    },
+    {
+      "variable": "PANEL_A_YLIM",
+      "expression": "(0.0, 0.45)",
+      "cells": [
+        178
+      ]
+    },
+    {
+      "variable": "PANEL_B_YLIM",
+      "expression": "(-0.4, 0.4)",
+      "cells": [
+        173,
+        174,
+        175,
+        176,
+        179,
+        181
+      ]
+    },
+    {
+      "variable": "PANEL_B_YLIM",
+      "expression": "(-0.5, 0.5)",
+      "cells": [
+        178
+      ]
+    },
+    {
+      "variable": "PATH",
+      "expression": "\"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results/6_df_clinical_baseline_sila_gp_kls_LABELS.csv\"",
+      "cells": [
+        40,
+        45,
+        46,
+        47
+      ]
+    },
+    {
+      "variable": "PERSIST_K",
+      "expression": "2",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "PLOT_ALL_EDGES",
+      "expression": "True",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "PLOT_ALL_LINES",
+      "expression": "True",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "variable": "PLOT_GRAPH_PROPERTIES",
+      "expression": "[ \"Betweenness\", \"Clustering coefficient\", \"Participation coefficient\", \"Strength\", ]",
+      "cells": [
+        174
+      ]
+    },
+    {
+      "variable": "PLOT_GRAPH_PROPERTIES",
+      "expression": "[ \"Betweenness\", \"Participation coefficient\", ]",
+      "cells": [
+        173,
+        179
+      ]
+    },
+    {
+      "variable": "PLOT_GRAPH_PROPERTIES",
+      "expression": "[ \"Participation coefficient\", \"Betweenness\", \"Clustering coefficient\", \"Strength\", ]",
+      "cells": [
+        175,
+        176,
+        181,
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "PLOT_GRAPH_PROPERTIES_CANONICAL",
+      "expression": "[ \"Participation coefficient\", \"Betweenness\", \"Clustering coefficient\", \"Strength\", ]",
+      "cells": [
+        178
+      ]
+    },
+    {
+      "variable": "PLOT_TOP10_BOLD",
+      "expression": "True",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "variable": "PREGAM_CSV",
+      "expression": "FIG4_BASE / \"group_graph_metrics_concat.csv\"",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "PRETTY",
+      "expression": "{ \"z_avg_strength\": \"Strength (z)\", \"z_avg_betweenness\": \"Betweenness (z)\", \"z_avg_clustering_coef\": \"Clustering (z)\", \"z_global_efficiency\": \"Global Efficiency (z)\", \"z_centiloid\": \"Centiloid (z)\", }",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "PRE_ONSET_BINS",
+      "expression": "[\"[-15,-10)\", \"[-10,-5)\", \"[-5,0)\"]",
+      "cells": [
+        112,
+        113
+      ]
+    },
+    {
+      "variable": "PROJECT_BASE",
+      "expression": "DRIVE_BASE / \"PET_KLS_Project\" / \"Final_Results\"",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "P_COL",
+      "expression": "\"p\"",
+      "cells": [
+        134,
+        135,
+        152
+      ]
+    },
+    {
+      "variable": "P_COL",
+      "expression": "\"p_value\"",
+      "cells": [
+        161,
+        165,
+        166
+      ]
+    },
+    {
+      "variable": "QCOL",
+      "expression": "\"q\"",
+      "cells": [
+        140,
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "QLOG_CAP",
+      "expression": "30.0",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "Q_ALPHA",
+      "expression": "0.05",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "Q_COL",
+      "expression": "\"q\"",
+      "cells": [
+        134,
+        135,
+        152
+      ]
+    },
+    {
+      "variable": "Q_EPS",
+      "expression": "1e-300",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "Q_T1",
+      "expression": "0.05",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "Q_T2",
+      "expression": "0.01",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "Q_T3",
+      "expression": "1e-12",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "Q_THRESH",
+      "expression": "0.05",
+      "cells": [
+        122,
+        134,
+        135,
+        143,
+        144,
+        145,
+        146,
+        147,
+        149,
+        150,
+        152
+      ]
+    },
+    {
+      "variable": "RANDOM_SEED",
+      "expression": "0",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "RANDOM_SEED",
+      "expression": "2",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "RANDOM_STATE",
+      "expression": "2026",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "RANK_BY",
+      "expression": "\"q\"",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "RECEPTOR_CSV",
+      "expression": "BRAINMAP_DIR / \"receptor_density_Yeo17_aggregated.csv\"",
+      "cells": [
+        160
+      ]
+    },
+    {
+      "variable": "RED_CASE_GT_HC",
+      "expression": "\"#D7191C\"",
+      "cells": [
+        143,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "RED_CMAP",
+      "expression": "colormaps.get_cmap(\"Reds\")",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "RED_HC_GT_CASE",
+      "expression": "\"#D7191C\"",
+      "cells": [
+        144,
+        145
+      ]
+    },
+    {
+      "variable": "REQUIRED_META",
+      "expression": "[\"estdtt0\", \"age\", \"sex\"]",
+      "cells": [
+        155
+      ]
+    },
+    {
+      "variable": "REQUIRE_PERSIST",
+      "expression": "True",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "ROI_COL",
+      "expression": "\"roi\"",
+      "cells": [
+        106,
+        107
+      ]
+    },
+    {
+      "variable": "ROI_COLUMN_CANDIDATES",
+      "expression": "[ \"ROI.Name_17_mod\", \"ROI.Name_17\", \"ROI\", \"roi\", \"roi_name\", \"ROI.Name\", ]",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "ROI_NET_RE",
+      "expression": "re.compile(r\"^(LH|RH)_([A-Za-z]+[A-Za-z0-9]*)_\")",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "variable": "ROI_SOURCE_CSV",
+      "expression": "BRAINMAP_DIR / \"receptor_density_Yeo17_aggregated.csv\"",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "ROI_SOURCE_CSV",
+      "expression": "Path( \"<GOOGLE_DRIVE_ROOT>/brainmaps/yeo7to17_100ROI_processed/\" \"receptor_density_Yeo17_aggregated.csv\" )",
+      "cells": [
+        158,
+        167,
+        168
+      ]
+    },
+    {
+      "variable": "ROLLING_MODE",
+      "expression": "\"fraction\"",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "ROLL_FIXED",
+      "expression": "75",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "ROLL_FRAC",
+      "expression": "0.05",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "RUN_DYNAMIC_ANALYSIS",
+      "expression": "True",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "RUN_GROUP_ANALYSIS",
+      "expression": "True",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "R_COL",
+      "expression": "\"pearson_r\"",
+      "cells": [
+        161,
+        165,
+        166
+      ]
+    },
+    {
+      "variable": "SAVE_COMPOSITES",
+      "expression": "True",
+      "cells": [
+        28
+      ]
+    },
+    {
+      "variable": "SAVE_FIGURES",
+      "expression": "True",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "SAVE_OUTPUTS",
+      "expression": "False",
+      "cells": [
+        162,
+        163,
+        164,
+        167,
+        170,
+        173,
+        174,
+        175,
+        176,
+        178,
+        179,
+        181,
+        182
+      ]
+    },
+    {
+      "variable": "SAVE_OUTPUTS",
+      "expression": "True",
+      "cells": [
+        166
+      ]
+    },
+    {
+      "variable": "SAVE_PNG",
+      "expression": "False",
+      "cells": [
+        25,
+        30,
+        31
+      ]
+    },
+    {
+      "variable": "SAVE_PNG",
+      "expression": "True",
+      "cells": [
+        106,
+        107
+      ]
+    },
+    {
+      "variable": "SCATTER_ALPHA",
+      "expression": "0.12",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "variable": "SCATTER_ALPHA",
+      "expression": "0.35",
+      "cells": [
+        46
+      ]
+    },
+    {
+      "variable": "SCATTER_S",
+      "expression": "10",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "SECTOR_FACE_ALPHA",
+      "expression": "0.10",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "SECTOR_LW",
+      "expression": "1.2",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "SECTOR_SPACE",
+      "expression": "2",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "SECTOR_SPACE",
+      "expression": "4",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "SEED",
+      "expression": "2026",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "SEED",
+      "expression": "42",
+      "cells": [
+        74,
+        92,
+        94
+      ]
+    },
+    {
+      "variable": "SEG_SIG_RULE",
+      "expression": "\"either\"",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "variable": "SEX_COL",
+      "expression": "\"sex\"",
+      "cells": [
+        192,
+        194
+      ]
+    },
+    {
+      "variable": "SHOW_BRAIN_TEMPLATES",
+      "expression": "True",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "SHOW_INLINE",
+      "expression": "False",
+      "cells": [
+        28
+      ]
+    },
+    {
+      "variable": "SIGNIFICANCE_COL",
+      "expression": "\"q_value\"",
+      "cells": [
+        179,
+        180
+      ]
+    },
+    {
+      "variable": "SIGNIFICANCE_THRESHOLD",
+      "expression": "0.05",
+      "cells": [
+        179,
+        180
+      ]
+    },
+    {
+      "variable": "SIG_ALPHA",
+      "expression": "0.80",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "variable": "SITE_COL",
+      "expression": "\"site_name\"",
+      "cells": [
+        194
+      ]
+    },
+    {
+      "variable": "SNAPSHOT_TIMES",
+      "expression": "[-10, 0, 10]",
+      "cells": [
+        167
+      ]
+    },
+    {
+      "variable": "SORT_BY_GP",
+      "expression": "\"Participation coefficient\"",
+      "cells": [
+        175,
+        176,
+        178,
+        181,
+        182,
+        183
+      ]
+    },
+    {
+      "variable": "SPIN_DIR",
+      "expression": "OUT_DIR / \"spatial_null_cache\"",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "SPLINE_DEG",
+      "expression": "3",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "SPLINE_DF",
+      "expression": "12",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "STAGE_EDGES",
+      "expression": "[ -np.inf, -15, -10, -5, 0, 5, 10, 15.000001, ]",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "STAGE_LABELS",
+      "expression": "[ \"<-15\", \"[-15,-10)\", \"[-10,-5)\", \"[-5,0)\", \"[0,5)\", \"[5,10)\", \"[10,15]\", ]",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "variable": "STAGING_CSV",
+      "expression": "os.path.join(BASE, \"staging_df.csv\")",
+      "cells": [
+        186
+      ]
+    },
+    {
+      "variable": "STAMP",
+      "expression": "pd.Timestamp.now().strftime(\"%Y%m%d_%H%M%S\")",
+      "cells": [
+        152
+      ]
+    },
+    {
+      "variable": "STEP",
+      "expression": "0.40",
+      "cells": [
+        183
+      ]
+    },
+    {
+      "variable": "STEP",
+      "expression": "1",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "STEP",
+      "expression": "1.0",
+      "cells": [
+        122
+      ]
+    },
+    {
+      "variable": "SUBJECT_CANDIDATES",
+      "expression": "[\"amypad_id\", \"subject_id\", \"participant_id\", \"sub\", \"SUBJECT\", \"id\"]",
+      "cells": [
+        16,
+        124
+      ]
+    },
+    {
+      "variable": "SUBJECT_COL",
+      "expression": "\"subject_id\"",
+      "cells": [
+        8,
+        46,
+        186,
+        192,
+        194
+      ]
+    },
+    {
+      "variable": "SUBSUM_PATH",
+      "expression": "\"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results/Figure_1/edges_subject_summaries.csv\"",
+      "cells": [
+        43
+      ]
+    },
+    {
+      "variable": "SUB_COL",
+      "expression": "\"subject_id\"",
+      "cells": [
+        72,
+        74
+      ]
+    },
+    {
+      "variable": "SUM_PATH",
+      "expression": "preferred[0] if preferred else hits[0]",
+      "cells": [
+        73
+      ]
+    },
+    {
+      "variable": "SYNONYMS",
+      "expression": "{ \"avg_strength\": [\"avg_strength\", \"strength\", \"mean_strength\"], \"avg_betweenness\": [\"avg_betweenness\", \"betweenness\", \"mean_betweenness\"], \"avg_clustering_coef\": [\"avg_clustering_coef\", \"clustering\", \"clustering_coef\", \"average_clustering\"], \"global_efficiency\": [\"global_efficiency\", \"efficiency_global\", \"Eglob\", \"E_global\"], \"centiloid\": [\"centiloid\", \"pet_cl_refwc_gca_gaain\", \"pet_centiloid\", \"cl\", \"CL\"], \"age\": [\"age\", \"Age\", \"AGE\", \"baseline_age\"], \"sex\": [\"sex\", \"Sex\", \"SEX\"], }",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "TICK_EVERY",
+      "expression": "2",
+      "cells": [
+        22
+      ]
+    },
+    {
+      "variable": "TICK_FONTSIZE",
+      "expression": "6",
+      "cells": [
+        22
+      ]
+    },
+    {
+      "variable": "TIME_COL",
+      "expression": "\"estdtt0\"",
+      "cells": [
+        46,
+        47,
+        72,
+        74,
+        98,
+        161,
+        162,
+        164,
+        165,
+        166,
+        192,
+        198
+      ]
+    },
+    {
+      "variable": "TIME_MAX",
+      "expression": "15.0",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "TIME_MIN",
+      "expression": "-15.0",
+      "cells": [
+        198
+      ]
+    },
+    {
+      "variable": "TITLE_A",
+      "expression": "\"Continuous empirical GAM model for graph properties over time to onset\"",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "TITLE_ANCHOR",
+      "expression": "\"Anchored to all estdtt0 < -15\"",
+      "cells": [
+        27,
+        28
+      ]
+    },
+    {
+      "variable": "TITLE_B",
+      "expression": "\"Continuous empirical GAM model for graph properties over time to onset (with < -15 bin point)\"",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "variable": "TOP_BLUE",
+      "expression": "180",
+      "cells": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "TOP_N",
+      "expression": "10",
+      "cells": [
+        163,
+        164
+      ]
+    },
+    {
+      "variable": "TOP_N",
+      "expression": "None",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "TOP_NEG",
+      "expression": "15",
+      "cells": [
+        134,
+        135
+      ]
+    },
+    {
+      "variable": "TOP_NEG",
+      "expression": "30",
+      "cells": [
+        152
+      ]
+    },
+    {
+      "variable": "TOP_N_GENES",
+      "expression": "10",
+      "cells": [
+        182,
+        183,
+        198
+      ]
+    },
+    {
+      "variable": "TOP_N_RECEPTORS",
+      "expression": "10",
+      "cells": [
+        182,
+        183,
+        198
+      ]
+    },
+    {
+      "variable": "TOP_POS",
+      "expression": "15",
+      "cells": [
+        134,
+        135
+      ]
+    },
+    {
+      "variable": "TOP_POS",
+      "expression": "30",
+      "cells": [
+        152
+      ]
+    },
+    {
+      "variable": "TOP_RED",
+      "expression": "25",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "variable": "TOP_RED",
+      "expression": "70",
+      "cells": [
+        143,
+        144,
+        145,
+        146
+      ]
+    },
+    {
+      "variable": "TRACER_COL",
+      "expression": "\"pet_tracer\"",
+      "cells": [
+        194
+      ]
+    },
+    {
+      "variable": "T_EARLY",
+      "expression": "-15",
+      "cells": [
+        168
+      ]
+    },
+    {
+      "variable": "T_LATE",
+      "expression": "15",
+      "cells": [
+        168
+      ]
+    },
+    {
+      "variable": "USE",
+      "expression": "\"ROI\"",
+      "cells": [
+        125
+      ]
+    },
+    {
+      "variable": "USE_Q_TIERS",
+      "expression": "True",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "VALUE_COL",
+      "expression": "\"onset_year\"",
+      "cells": [
+        106,
+        107
+      ]
+    },
+    {
+      "variable": "VALUE_COLS",
+      "expression": "[\"mean_edges\", \"median_edges\"]",
+      "cells": [
+        43
+      ]
+    },
+    {
+      "variable": "VMAX",
+      "expression": "+vlim",
+      "cells": [
+        168
+      ]
+    },
+    {
+      "variable": "VMAX_CONNECTOME",
+      "expression": "1.0",
+      "cells": [
+        20,
+        22
+      ]
+    },
+    {
+      "variable": "VMIN",
+      "expression": "-vlim",
+      "cells": [
+        168
+      ]
+    },
+    {
+      "variable": "VMIN_CONNECTOME",
+      "expression": "0.0",
+      "cells": [
+        20,
+        22
+      ]
+    },
+    {
+      "variable": "WHITE_LABEL_NETS",
+      "expression": "{ \"DefaultA\", \"VisCent\", \"ContC\", \"TempPar\" }",
+      "cells": [
+        140
+      ]
+    },
+    {
+      "variable": "WIDE_CSV",
+      "expression": "os.path.join(BASE, \"6_df_clinical_baseline_sila_gp_kls_LABELS.csv\")",
+      "cells": [
+        133
+      ]
+    },
+    {
+      "variable": "WIDE_PATH",
+      "expression": "\"<GOOGLE_DRIVE_ROOT>/PET_KLS_Project/Final_Results/6_df_clinical_baseline_sila_gp_kls_LABELS.csv\"",
+      "cells": [
+        72,
+        74,
+        112,
+        113
+      ]
+    },
+    {
+      "variable": "WIN_MAX",
+      "expression": "15",
+      "cells": [
+        8
+      ]
+    },
+    {
+      "variable": "WITHIN_PREFIX",
+      "expression": "\"withinH_\"",
+      "cells": [
+        111
+      ]
+    },
+    {
+      "variable": "X",
+      "expression": "d[edge_cols].to_numpy(dtype=float)",
+      "cells": [
+        105
+      ]
+    },
+    {
+      "variable": "X",
+      "expression": "df[edge_cols].apply(pd.to_numeric, errors=\"coerce\").to_numpy()",
+      "cells": [
+        46,
+        47,
+        74
+      ]
+    },
+    {
+      "variable": "X",
+      "expression": "df[edge_cols].apply(pd.to_numeric, errors=\"coerce\").to_numpy(dtype=float)",
+      "cells": [
+        115
+      ]
+    },
+    {
+      "variable": "X",
+      "expression": "df[edge_cols].to_numpy(dtype=float)",
+      "cells": [
+        110
+      ]
+    },
+    {
+      "variable": "XLIM",
+      "expression": "(-15, 15)",
+      "cells": [
+        161,
+        164,
+        165,
+        166
+      ]
+    },
+    {
+      "variable": "YLIM",
+      "expression": "(-0.75, 0.75)",
+      "cells": [
+        161,
+        164,
+        165,
+        166
+      ]
+    },
+    {
+      "variable": "ZLOCKS",
+      "expression": "[2.0, 2.5, 3.0]",
+      "cells": [
+        27,
+        28
+      ]
+    }
+  ],
+  "function_defaults": [
+    {
+      "function": "_autocrop_rgba",
+      "parameter": "pad",
+      "default": "2",
+      "cells": [
+        28
+      ]
+    },
+    {
+      "function": "abbreviate_feature_label",
+      "parameter": "max_len",
+      "default": "20",
+      "cells": [
+        174,
+        175
+      ]
+    },
+    {
+      "function": "add_cbar",
+      "parameter": "fontsize",
+      "default": "6.5",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "function": "alpha_from_p",
+      "parameter": "max_alpha",
+      "default": "1.0",
+      "cells": [
+        161,
+        165,
+        166
+      ]
+    },
+    {
+      "function": "alpha_from_p",
+      "parameter": "min_alpha",
+      "default": "0.15",
+      "cells": [
+        161,
+        165,
+        166
+      ]
+    },
+    {
+      "function": "bootstrap_ci",
+      "parameter": "ci",
+      "default": "95",
+      "cells": [
+        43
+      ]
+    },
+    {
+      "function": "bootstrap_ci",
+      "parameter": "ci",
+      "default": "CI",
+      "cells": [
+        92,
+        94
+      ]
+    },
+    {
+      "function": "bootstrap_ci",
+      "parameter": "n_boot",
+      "default": "2000",
+      "cells": [
+        43
+      ]
+    },
+    {
+      "function": "bootstrap_ci",
+      "parameter": "n_boot",
+      "default": "N_BOOT",
+      "cells": [
+        92,
+        94
+      ]
+    },
+    {
+      "function": "bootstrap_ci",
+      "parameter": "seed",
+      "default": "42",
+      "cells": [
+        43
+      ]
+    },
+    {
+      "function": "bootstrap_ci",
+      "parameter": "seed",
+      "default": "SEED",
+      "cells": [
+        92,
+        94
+      ]
+    },
+    {
+      "function": "bootstrap_mean_ci",
+      "parameter": "ci",
+      "default": "95",
+      "cells": [
+        74
+      ]
+    },
+    {
+      "function": "bootstrap_mean_ci",
+      "parameter": "n_boot",
+      "default": "2000",
+      "cells": [
+        74
+      ]
+    },
+    {
+      "function": "bootstrap_mean_ci",
+      "parameter": "seed",
+      "default": "42",
+      "cells": [
+        74
+      ]
+    },
+    {
+      "function": "build_bin_sig_lookup",
+      "parameter": "q_thresh",
+      "default": "0.05",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "function": "build_tgrid",
+      "parameter": "spline_degree",
+      "default": "3",
+      "cells": [
+        159
+      ]
+    },
+    {
+      "function": "build_top10_biological_table",
+      "parameter": "save_outputs",
+      "default": "False",
+      "cells": [
+        163
+      ]
+    },
+    {
+      "function": "build_top10_biological_table",
+      "parameter": "top_n",
+      "default": "10",
+      "cells": [
+        163
+      ]
+    },
+    {
+      "function": "clean_feature_label",
+      "parameter": "max_len",
+      "default": "18",
+      "cells": [
+        178,
+        183
+      ]
+    },
+    {
+      "function": "clean_feature_label",
+      "parameter": "max_len",
+      "default": "22",
+      "cells": [
+        176,
+        181,
+        182
+      ]
+    },
+    {
+      "function": "clean_feature_label",
+      "parameter": "max_len",
+      "default": "28",
+      "cells": [
+        166
+      ]
+    },
+    {
+      "function": "color_xtick_labels",
+      "parameter": "font_size",
+      "default": "6",
+      "cells": [
+        178
+      ]
+    },
+    {
+      "function": "compute_p_from_r",
+      "parameter": "n",
+      "default": "N_ROI",
+      "cells": [
+        161,
+        162,
+        164,
+        165,
+        166
+      ]
+    },
+    {
+      "function": "crop_white",
+      "parameter": "pad",
+      "default": "40",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "function": "crop_white",
+      "parameter": "threshold",
+      "default": "250",
+      "cells": [
+        17
+      ]
+    },
+    {
+      "function": "detect_edge_columns",
+      "parameter": "exclude_diagonal",
+      "default": "True",
+      "cells": [
+        16
+      ]
+    },
+    {
+      "function": "find_crossing",
+      "parameter": "pick_near",
+      "default": "0.0",
+      "cells": [
+        104
+      ]
+    },
+    {
+      "function": "fit_gam_and_predict",
+      "parameter": "use_covars",
+      "default": "True",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "function": "fit_gam_single",
+      "parameter": "spline_degree",
+      "default": "3",
+      "cells": [
+        159
+      ]
+    },
+    {
+      "function": "fit_gam_single",
+      "parameter": "spline_df",
+      "default": "10",
+      "cells": [
+        159
+      ]
+    },
+    {
+      "function": "jensen_shannon_divergence",
+      "parameter": "base2",
+      "default": "True",
+      "cells": [
+        46
+      ]
+    },
+    {
+      "function": "jensen_shannon_divergence",
+      "parameter": "eps",
+      "default": "1e-12",
+      "cells": [
+        46
+      ]
+    },
+    {
+      "function": "make_bins",
+      "parameter": "start_lt",
+      "default": "-30",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "function": "make_bins",
+      "parameter": "step",
+      "default": "5",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "function": "make_bins",
+      "parameter": "stop",
+      "default": "15",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "function": "make_coronal_template_rgba",
+      "parameter": "crop_pad",
+      "default": "8",
+      "cells": [
+        147,
+        150
+      ]
+    },
+    {
+      "function": "make_cv_pipeline",
+      "parameter": "include_kls",
+      "default": "False",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "function": "make_cv_pipeline",
+      "parameter": "include_stage",
+      "default": "False",
+      "cells": [
+        192
+      ]
+    },
+    {
+      "function": "make_traj",
+      "parameter": "title_suffix",
+      "default": "\"\"",
+      "cells": [
+        72
+      ]
+    },
+    {
+      "function": "per_roi_mean_kls_fast",
+      "parameter": "verbose",
+      "default": "True",
+      "cells": [
+        14
+      ]
+    },
+    {
+      "function": "plot_binned",
+      "parameter": "out_png",
+      "default": "None",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "function": "plot_continuous",
+      "parameter": "out_png",
+      "default": "None",
+      "cells": [
+        47
+      ]
+    },
+    {
+      "function": "plot_curves",
+      "parameter": "add_leftbin_point",
+      "default": "False",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "function": "plot_curves",
+      "parameter": "leftbin",
+      "default": "None",
+      "cells": [
+        33
+      ]
+    },
+    {
+      "function": "plot_markers_map",
+      "parameter": "out_png",
+      "default": "None",
+      "cells": [
+        106,
+        107
+      ]
+    },
+    {
+      "function": "plot_matrix",
+      "parameter": "vmax",
+      "default": "None",
+      "cells": [
+        12
+      ]
+    },
+    {
+      "function": "plot_matrix",
+      "parameter": "vmin",
+      "default": "None",
+      "cells": [
+        12
+      ]
+    },
+    {
+      "function": "plot_matrix_network_blocks",
+      "parameter": "boundary_color",
+      "default": "\"gray\"",
+      "cells": [
+        10
+      ]
+    },
+    {
+      "function": "plot_matrix_network_blocks",
+      "parameter": "boundary_lw",
+      "default": "0.6",
+      "cells": [
+        10
+      ]
+    },
+    {
+      "function": "plot_matrix_network_blocks",
+      "parameter": "network_fontsize",
+      "default": "10",
+      "cells": [
+        10
+      ]
+    },
+    {
+      "function": "plot_matrix_network_blocks",
+      "parameter": "show_inline",
+      "default": "True",
+      "cells": [
+        10
+      ]
+    },
+    {
+      "function": "plot_matrix_network_blocks",
+      "parameter": "title_fontsize",
+      "default": "18",
+      "cells": [
+        10
+      ]
+    },
+    {
+      "function": "plot_matrix_network_blocks",
+      "parameter": "vmax",
+      "default": "None",
+      "cells": [
+        10
+      ]
+    },
+    {
+      "function": "plot_matrix_network_blocks",
+      "parameter": "vmin",
+      "default": "None",
+      "cells": [
+        10
+      ]
+    },
+    {
+      "function": "plot_one_graph_property",
+      "parameter": "significant_only",
+      "default": "False",
+      "cells": [
+        179
+      ]
+    },
+    {
+      "function": "plot_spaghetti",
+      "parameter": "title",
+      "default": "\"Network-pair \u0394KLS trajectory (anchored to < -15)\"",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "function": "plot_spaghetti",
+      "parameter": "top10",
+      "default": "None",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "function": "plot_spaghetti_with_sigline",
+      "parameter": "title",
+      "default": "\"Anchored netpair \u0394KLS trajectories + black line: # significant netpairs vs anchor\"",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "function": "plot_spaghetti_with_sigline",
+      "parameter": "top10",
+      "default": "None",
+      "cells": [
+        25
+      ]
+    },
+    {
+      "function": "plot_summary_triptych_inline",
+      "parameter": "cmap_name",
+      "default": "\"coolwarm\"",
+      "cells": [
+        113
+      ]
+    },
+    {
+      "function": "render_bin_panels_rgba",
+      "parameter": "cmap",
+      "default": "CMAP",
+      "cells": [
+        28
+      ]
+    },
+    {
+      "function": "render_brain",
+      "parameter": "cmap",
+      "default": "CMAP",
+      "cells": [
+        27
+      ]
+    },
+    {
+      "function": "render_brain_continuous",
+      "parameter": "label",
+      "default": "\"KLS\"",
+      "cells": [
+        15
+      ]
+    },
+    {
+      "function": "render_brain_discrete",
+      "parameter": "label",
+      "default": "\"KLS\"",
+      "cells": [
+        15
+      ]
+    },
+    {
+      "function": "render_brain_inline",
+      "parameter": "cmap",
+      "default": "CMAP",
+      "cells": [
+        28
+      ]
+    },
+    {
+      "function": "ridgeline_panel",
+      "parameter": "cmap_name",
+      "default": "\"coolwarm\"",
+      "cells": [
+        112
+      ]
+    },
+    {
+      "function": "ridgeline_panel",
+      "parameter": "xlim",
+      "default": "None",
+      "cells": [
+        112
+      ]
+    },
+    {
+      "function": "run_summary_stats",
+      "parameter": "save_outputs",
+      "default": "False",
+      "cells": [
+        162
+      ]
+    },
+    {
+      "function": "save_composite_png_for_zlock",
+      "parameter": "cmap",
+      "default": "CMAP",
+      "cells": [
+        28
+      ]
+    },
+    {
+      "function": "save_composite_png_for_zlock",
+      "parameter": "colorbar_label",
+      "default": "COLORBAR_LABEL",
+      "cells": [
+        28
+      ]
+    },
+    {
+      "function": "save_composite_png_for_zlock",
+      "parameter": "dpi",
+      "default": "DPI",
+      "cells": [
+        28
+      ]
+    },
+    {
+      "function": "scale_linewidth",
+      "parameter": "lw_max",
+      "default": "LW_MAX",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "function": "scale_linewidth",
+      "parameter": "lw_min",
+      "default": "LW_MIN",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "function": "scale_linewidth",
+      "parameter": "power",
+      "default": "LW_POWER",
+      "cells": [
+        135
+      ]
+    },
+    {
+      "function": "shannon_entropy",
+      "parameter": "base",
+      "default": "2.0",
+      "cells": [
+        104
+      ]
+    },
+    {
+      "function": "shannon_entropy",
+      "parameter": "bins",
+      "default": "30",
+      "cells": [
+        45,
+        110,
+        111
+      ]
+    },
+    {
+      "function": "shannon_entropy",
+      "parameter": "bins",
+      "default": "50",
+      "cells": [
+        104
+      ]
+    },
+    {
+      "function": "shannon_entropy",
+      "parameter": "eps",
+      "default": "1e-12",
+      "cells": [
+        45,
+        110,
+        111
+      ]
+    },
+    {
+      "function": "shannon_entropy_from_counts",
+      "parameter": "base2",
+      "default": "True",
+      "cells": [
+        46
+      ]
+    },
+    {
+      "function": "shannon_entropy_from_counts",
+      "parameter": "eps",
+      "default": "1e-12",
+      "cells": [
+        46,
+        192
+      ]
+    },
+    {
+      "function": "shannon_entropy_hist",
+      "parameter": "eps",
+      "default": "1e-12",
+      "cells": [
+        47,
+        72,
+        74,
+        94,
+        98
+      ]
+    },
+    {
+      "function": "shannon_entropy_hist",
+      "parameter": "min_n",
+      "default": "5000",
+      "cells": [
+        72,
+        74,
+        94,
+        98
+      ]
+    },
+    {
+      "function": "shannon_entropy_hist",
+      "parameter": "n_bins",
+      "default": "30",
+      "cells": [
+        47,
+        72,
+        74,
+        94,
+        98
+      ]
+    },
+    {
+      "function": "show_colorbar_inline",
+      "parameter": "cmap_name",
+      "default": "\"coolwarm\"",
+      "cells": [
+        113
+      ]
+    },
+    {
+      "function": "summarize_drift",
+      "parameter": "nets_order",
+      "default": "None",
+      "cells": [
+        113
+      ]
+    },
+    {
+      "function": "unit_center_vector",
+      "parameter": "label",
+      "default": "\"vector\"",
+      "cells": [
+        198
+      ]
+    }
+  ]
+}
